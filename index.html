@@ -200,6 +200,33 @@
     margin-top: 6px;
   }
 
+  /* ─── Capacity indicator ─── */
+  .capacity-pill {
+    background: rgba(122,106,150,0.08);
+    border: 1px solid var(--accent);
+    border-left: 4px solid var(--accent);
+    border-radius: 3px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .capacity-pill strong { color: var(--accent); font-weight: 700; }
+  .capacity-pill.tight {
+    background: #fbf3df;
+    border-color: #d9b86c;
+    border-left-color: #b8941f;
+  }
+  .capacity-pill.tight strong { color: #8b6f1c; }
+  .capacity-pill.short {
+    background: #fbe8e8;
+    border-color: #d96c6c;
+    border-left-color: #b81f1f;
+  }
+  .capacity-pill.short strong { color: #8b1c1c; }
+
   /* ─── Guests ─── */
   .guest-grid {
     display: grid;
@@ -1615,6 +1642,9 @@
     <!-- Guests -->
     <details class="section" id="sec-guests" open>
       <summary><h2>Guest List &middot; 21 Attending of 22 Listed</h2></summary>
+      <div class="capacity-pill" id="capacityPill">
+        <span class="cap-line">Current order feeds <strong id="capFeeds">~32</strong> &middot; <strong id="capBuffer">11-person buffer</strong> for unexpected guests</span>
+      </div>
       <div class="guest-grid">
         <div class="guest-col">
           <h3 id="adultsHeader">Adults</h3>
@@ -1723,7 +1753,7 @@
             <span class="item">Tiramis&ugrave;</span>
             <div class="item-desc">Espresso-soaked ladyfingers, mascarpone cream, dusted with cocoa</div>
           </div>
-          <span class="size">Small pan</span>
+          <span class="size">Large pan</span>
         </li>
       </ul>
 
@@ -1908,11 +1938,11 @@
           <div class="item-name">Tiramis&ugrave;</div>
           <div class="qty-cell">
             <span class="price">$69.09</span><span class="x">&times;</span>
-            <input type="number" class="qty" inputmode="numeric" data-small-price="69.09" data-qty min="0" value="1" />
+            <input type="number" class="qty" inputmode="numeric" data-small-price="69.09" data-qty min="0" value="0" />
           </div>
           <div class="qty-cell">
             <span class="price est">$135.00</span><span class="x">&times;</span>
-            <input type="number" class="qty" inputmode="numeric" data-large-price="135.00" data-qty min="0" value="0" />
+            <input type="number" class="qty" inputmode="numeric" data-large-price="135.00" data-qty min="0" value="1" />
           </div>
           <div class="line-total" data-line>$0.00</div>
         </div>
@@ -2038,6 +2068,7 @@
     // Attending count for per-guest
     const attEl = document.getElementById('attCount');
     if (attEl) attEl.textContent = c.totalAtt;
+    if (typeof refreshCapacity === 'function') refreshCapacity();
     return c;
   }
 
@@ -2071,6 +2102,38 @@
 
     // Keep the add-item dropdown in sync with what's hidden
     if (typeof populateAddItemDropdown === 'function') populateAddItemDropdown();
+    if (typeof refreshCapacity === 'function') refreshCapacity();
+  }
+
+  // Feeding-capacity math for a sit-down family-dinner buffet.
+  // Maggiano's: large pan = 16 servings, small pan = 8.
+  // Family dinner consumption rate ≈ 2.5 servings/person (full plate + sampling).
+  function refreshCapacity() {
+    let totalServings = 0;
+    document.querySelectorAll('[data-row]:not(.zero)').forEach((row) => {
+      const sEl = row.querySelector('input[data-small-price]');
+      const lEl = row.querySelector('input[data-large-price]');
+      if (sEl) totalServings += (parseInt(sEl.value, 10) || 0) * 8;
+      if (lEl) totalServings += (parseInt(lEl.value, 10) || 0) * 16;
+    });
+    const feeds = Math.floor(totalServings / 2.5);
+    const c = countAttending();
+    const buffer = feeds - c.totalAtt;
+    const pill = document.getElementById('capacityPill');
+    const feedsEl = document.getElementById('capFeeds');
+    const bufferEl = document.getElementById('capBuffer');
+    if (!pill || !feedsEl || !bufferEl) return;
+    feedsEl.textContent = '~' + feeds;
+    pill.classList.remove('tight', 'short');
+    if (buffer < 0) {
+      bufferEl.textContent = Math.abs(buffer) + ' short of attending';
+      pill.classList.add('short');
+    } else if (buffer < 4) {
+      bufferEl.textContent = buffer + '-person buffer (tight)';
+      pill.classList.add('tight');
+    } else {
+      bufferEl.textContent = buffer + '-person buffer for unexpected guests';
+    }
   }
 
   function setFulfillment(mode) {

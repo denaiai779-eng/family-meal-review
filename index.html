@@ -1095,7 +1095,68 @@
   }
   .suggestion.applied .apply-btn::before { content: "✓ "; }
 
-  /* ─── Sign-off steps in sister cards ─── */
+  /* ─── Inline section sign-off ─── */
+  .inline-signoff {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: rgba(122,106,150,0.06);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: none;
+  }
+  body.as-Des .inline-signoff,
+  body.as-Dee .inline-signoff { display: block; }
+  .inline-signoff .so-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .inline-signoff .so-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .inline-signoff .so-btn {
+    flex: 1;
+    padding: 14px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    background: #fff;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s;
+    -webkit-appearance: none;
+    min-height: 48px;
+  }
+  .inline-signoff .so-btn:hover { background: rgba(122,106,150,0.08); }
+  .inline-signoff .so-btn.active.approve { background: #4a8b5e; color: #fff; border-color: #4a8b5e; }
+  .inline-signoff .so-btn.active.change { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .inline-signoff .so-note {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    min-height: 56px;
+    background: #fff;
+    box-sizing: border-box;
+    resize: vertical;
+    -webkit-appearance: none;
+  }
+  .inline-signoff .so-note:focus { border-color: var(--accent); outline: none; }
+  .inline-signoff.done .so-q::before { content: "✓ "; color: #4a8b5e; font-weight: 700; }
+  .inline-signoff.changed .so-q::before { content: "✎ "; color: var(--accent); font-weight: 700; }
+
+  /* ─── Sign-off steps in sister cards (legacy, hidden when inline used) ─── */
   html { scroll-behavior: smooth; }
 
   .signoff-count {
@@ -1204,6 +1265,45 @@
     cursor: not-allowed;
   }
   .send-btn:disabled:hover { background: #c9bcd9; }
+
+  .send-box {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  .signoff-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .status-pill {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    background: rgba(122,106,150,0.06);
+    border: 1px solid var(--rule-soft);
+    padding: 6px 10px;
+    border-radius: 14px;
+    font-weight: 500;
+  }
+  .status-pill em { font-style: normal; color: var(--ink-soft); font-weight: 600; }
+  .status-pill[data-state="approve"] {
+    background: #e8f4ec;
+    border-color: #4a8b5e;
+    color: #2c5d3a;
+  }
+  .status-pill[data-state="approve"] em::before { content: "✓ "; }
+  .status-pill[data-state="approve"] em { color: #2c5d3a; }
+  .status-pill[data-state="change"] {
+    background: rgba(122,106,150,0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .status-pill[data-state="change"] em::before { content: "✎ "; }
+  .status-pill[data-state="change"] em { color: var(--accent); }
 
   /* ─── Section nav (jump to next) ─── */
   .next-section-link {
@@ -1506,6 +1606,14 @@
           <input type="text" class="loc-other" placeholder="enter address or place" disabled />
         </label>
       </div>
+      <div class="inline-signoff" data-section="location">
+        <div class="so-q">Location &mdash; works?</div>
+        <div class="so-actions">
+          <button type="button" class="so-btn approve" data-act="approve">&check; Yes</button>
+          <button type="button" class="so-btn change" data-act="change">Suggest change</button>
+        </div>
+        <textarea class="so-note" hidden placeholder="suggested location"></textarea>
+      </div>
     </details>
 
     <!-- Menu -->
@@ -1541,6 +1649,26 @@
           <span class="size">Small pan</span>
         </li>
       </ul>
+
+      <div class="suggestions" style="margin-top:18px;">
+        <h3>Recommended Add-On</h3>
+        <div class="suggestion" data-fix="add-alfredo">
+          <span class="badge">Add-On</span>
+          <div class="body">
+            <strong>Add a small Fettuccine Alfredo with Chicken.</strong> Three kids attending may skip the spaghetti or marsala &mdash; alfredo is a familiar fallback. Parmesan-crusted chicken, parmesan, pecorino, roasted garlic. Small $77.29 / Large $152.19.
+            <button type="button" class="apply-btn" data-action="add-alfredo">Apply &mdash; Add Small ($77.29)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="inline-signoff" data-section="menu">
+        <div class="so-q">Menu &mdash; looks good?</div>
+        <div class="so-actions">
+          <button type="button" class="so-btn approve" data-act="approve">&check; Yes</button>
+          <button type="button" class="so-btn change" data-act="change">Suggest change</button>
+        </div>
+        <textarea class="so-note" hidden placeholder="what would you change?"></textarea>
+      </div>
     </details>
 
     <!-- Guests -->
@@ -1579,11 +1707,19 @@
           <button class="add-guest" data-add="kid">+ Add Kid</button>
         </div>
       </div>
+      <div class="inline-signoff" data-section="guests">
+        <div class="so-q">Guest list &mdash; looks good?</div>
+        <div class="so-actions">
+          <button type="button" class="so-btn approve" data-act="approve">&check; Yes</button>
+          <button type="button" class="so-btn change" data-act="change">Suggest change</button>
+        </div>
+        <textarea class="so-note" hidden placeholder="names to add or remove"></textarea>
+      </div>
     </details>
 
     <!-- Quote -->
     <details class="section" id="sec-quote">
-      <summary><h2>Itemized Quote &middot; Troy MI Location <span class="info-icon" tabindex="0" role="button" aria-label="Source info">i<span class="tooltip">Live from your DoorDash cart (Troy MI, Maggiano's). Toggle Delivery / Pickup to preset fees; tip doesn't apply to pickup. Item prices marked * are estimated for the larger pan size &mdash; confirm with Maggiano's.</span></span></h2></summary>
+      <summary><h2>Itemized Quote &middot; DoorDash &middot; Troy MI <span class="info-icon" tabindex="0" role="button" aria-label="Source info">i<span class="tooltip">Order placed via DoorDash (gift cards). Toggle Delivery / Pickup to preset fees; tip doesn't apply to pickup. Item prices marked * are estimates &mdash; the real price will show in your DoorDash cart when you select that size.</span></span></h2></summary>
       <div class="quote" id="quote">
         <div class="quote-row head">
           <div>Item</div>
@@ -1799,109 +1935,22 @@
         </div>
       </div>
 
-      <div class="suggestions">
-        <h3>Recommended Fixes &amp; Add-Ons</h3>
-
-        <div class="suggestion" data-fix="add-alfredo">
-          <span class="badge">Add-On</span>
-          <div class="body">
-            <strong>Add a small Fettuccine Alfredo with Chicken.</strong> Three kids attending may skip the spaghetti or marsala &mdash; alfredo is a familiar fallback. Parmesan-crusted chicken, parmesan, pecorino, roasted garlic. Small $77.29 / Large $152.19.
-            <button type="button" class="apply-btn" data-action="add-alfredo">Apply &mdash; Add Small ($77.29)</button>
-          </div>
-        </div>
-
-      </div>
     </details>
 
-    <!-- Sister feedback -->
+    <!-- Send-back box -->
     <details class="section" id="sec-review" open>
-      <summary><h2>Sister Sign-Off &middot; 3 Quick Decisions</h2></summary>
-      <div class="review-grid">
-
-        <div class="review-card" data-sister="Des">
-          <div class="name">Des</div>
-          <div class="role">3 Taps. Send.</div>
-
-          <div class="signoff" data-section="menu">
-            <div class="signoff-num">1 of 3</div>
-            <div class="signoff-q">Menu &mdash; looks good?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="what would you change?"></textarea>
-          </div>
-
-          <div class="signoff" data-section="guests">
-            <div class="signoff-num">2 of 3</div>
-            <div class="signoff-q">Guest list &mdash; looks good?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="names to add or remove"></textarea>
-          </div>
-
-          <div class="signoff" data-section="location">
-            <div class="signoff-num">3 of 3</div>
-            <div class="signoff-q">Mom's house &mdash; works?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="suggested location"></textarea>
-          </div>
-
-          <div class="signoff-extra">
-            <label>Anything else? (optional)</label>
-            <textarea class="signoff-extra-note" placeholder="dietary, allergies, food sensitivity"></textarea>
-          </div>
-
-          <button type="button" class="send-btn" data-sister="Des" disabled>Send to Nai</button>
+      <summary><h2>Send Your Feedback to Nai</h2></summary>
+      <div class="send-box">
+        <div class="signoff-status">
+          <span class="status-pill" data-status="location">Location: <em>pending</em></span>
+          <span class="status-pill" data-status="menu">Menu: <em>pending</em></span>
+          <span class="status-pill" data-status="guests">Guests: <em>pending</em></span>
         </div>
-
-        <div class="review-card" data-sister="Dee">
-          <div class="name">Dee</div>
-          <div class="role">3 Taps. Send.</div>
-
-          <div class="signoff" data-section="menu">
-            <div class="signoff-num">1 of 3</div>
-            <div class="signoff-q">Menu &mdash; looks good?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="what would you change?"></textarea>
-          </div>
-
-          <div class="signoff" data-section="guests">
-            <div class="signoff-num">2 of 3</div>
-            <div class="signoff-q">Guest list &mdash; looks good?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="names to add or remove"></textarea>
-          </div>
-
-          <div class="signoff" data-section="location">
-            <div class="signoff-num">3 of 3</div>
-            <div class="signoff-q">Mom's house &mdash; works?</div>
-            <div class="signoff-actions">
-              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
-              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
-            </div>
-            <textarea class="signoff-note" hidden placeholder="suggested location"></textarea>
-          </div>
-
-          <div class="signoff-extra">
-            <label>Anything else? (optional)</label>
-            <textarea class="signoff-extra-note" placeholder="dietary, allergies, food sensitivity"></textarea>
-          </div>
-
-          <button type="button" class="send-btn" data-sister="Dee" disabled>Send to Nai</button>
+        <div class="signoff-extra">
+          <label for="extraNote">Anything else? (optional)</label>
+          <textarea class="signoff-extra-note" id="extraNote" placeholder="dietary, allergies, food sensitivity"></textarea>
         </div>
-
+        <button type="button" class="send-btn" id="sendBtn" disabled>Send to Nai</button>
       </div>
     </details>
 
@@ -2033,46 +2082,126 @@
 
   let activeSister = null;
 
-  function getSisterCard(sister) {
-    return document.querySelector('.review-card[data-sister="' + sister + '"]');
+  // Per-sister, per-section signoff state.
+  const signoffState = {
+    Des: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
+    Dee: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
+  };
+
+  const SECTION_LABELS = { location: 'Location', menu: 'Menu', guests: 'Guest List' };
+  const SECTION_ORDER = ['location', 'menu', 'guests'];
+  const SECTION_DETAILS_ID = { location: 'sec-location', menu: 'sec-menu', guests: 'sec-guests' };
+
+  function getInlineBlock(section) {
+    return document.querySelector('.inline-signoff[data-section="' + section + '"]');
   }
 
+  function setInlineSignoffUI(block, state, note) {
+    const buttons = block.querySelectorAll('.so-btn');
+    buttons.forEach((b) => b.classList.toggle('active', b.dataset.act === state));
+    const ta = block.querySelector('.so-note');
+    block.classList.remove('done', 'changed');
+    if (state === 'approve') {
+      block.classList.add('done');
+      ta.hidden = true;
+    } else if (state === 'change') {
+      block.classList.add('changed');
+      ta.hidden = false;
+    } else {
+      ta.hidden = true;
+    }
+    ta.value = note || '';
+  }
+
+  function restoreInlineSignoffs() {
+    SECTION_ORDER.forEach((section) => {
+      const block = getInlineBlock(section);
+      if (!block) return;
+      if (activeSister) {
+        const state = signoffState[activeSister][section];
+        const note = signoffState[activeSister][section + 'Note'];
+        setInlineSignoffUI(block, state, note);
+      } else {
+        setInlineSignoffUI(block, null, '');
+      }
+    });
+    // Restore optional extra notes
+    const extraTa = document.getElementById('extraNote');
+    if (extraTa) extraTa.value = activeSister ? signoffState[activeSister].extra : '';
+    refreshStatusPills();
+    refreshSendBtn();
+  }
+
+  function refreshStatusPills() {
+    document.querySelectorAll('.status-pill').forEach((pill) => {
+      const section = pill.dataset.status;
+      const state = activeSister ? signoffState[activeSister][section] : null;
+      pill.dataset.state = state || '';
+      const em = pill.querySelector('em');
+      if (em) em.textContent = state === 'approve' ? 'looks good' : state === 'change' ? 'change suggested' : 'pending';
+    });
+  }
+
+  function refreshSendBtn() {
+    const sendBtn = document.getElementById('sendBtn');
+    if (!sendBtn) return;
+    if (!activeSister) { sendBtn.disabled = true; return; }
+    const allSet = SECTION_ORDER.every((s) => signoffState[activeSister][s] !== null);
+    sendBtn.disabled = !allSet;
+  }
+
+  function setSectionSignoff(section, state) {
+    if (!activeSister) return;
+    signoffState[activeSister][section] = state;
+    const block = getInlineBlock(section);
+    if (block) setInlineSignoffUI(block, state, signoffState[activeSister][section + 'Note']);
+    refreshStatusPills();
+    refreshSendBtn();
+  }
+
+  function setSectionNote(section, note) {
+    if (!activeSister) return;
+    signoffState[activeSister][section + 'Note'] = note;
+  }
+
+  // Backward-compat shim — old calls from auto-populate code path now route through new model
   function appendToSignoff(sister, section, line) {
     if (!sister) return;
-    const card = getSisterCard(sister);
-    if (!card) return;
-    const block = card.querySelector('.signoff[data-section="' + section + '"]');
-    if (!block) return;
-    // Auto-activate "Suggest change" mode + reveal note
-    setSignoffState(block, 'change');
-    const ta = block.querySelector('.signoff-note');
-    const existing = ta.value.trim();
-    ta.value = (existing ? existing + '\n' : '') + line;
-    refreshSendButtons();
-  }
-
-  function setSignoffState(block, state) {
-    const buttons = block.querySelectorAll('.signoff-btn');
-    buttons.forEach((b) => b.classList.toggle('active', b.dataset.act === state));
-    const note = block.querySelector('.signoff-note');
-    if (state === 'change') {
-      block.classList.remove('done');
-      block.classList.add('changed');
-      note.hidden = false;
-    } else if (state === 'approve') {
-      block.classList.remove('changed');
-      block.classList.add('done');
-      note.hidden = true;
+    if (signoffState[sister][section] === null) {
+      signoffState[sister][section] = 'change';
+    } else if (signoffState[sister][section] === 'approve') {
+      signoffState[sister][section] = 'change';
+    }
+    const existing = signoffState[sister][section + 'Note'];
+    signoffState[sister][section + 'Note'] = (existing ? existing + '\n' : '') + line;
+    if (sister === activeSister) {
+      const block = getInlineBlock(section);
+      if (block) setInlineSignoffUI(block, signoffState[sister][section], signoffState[sister][section + 'Note']);
+      refreshStatusPills();
+      refreshSendBtn();
     }
   }
 
-  function refreshSendButtons() {
-    document.querySelectorAll('.review-card').forEach((card) => {
-      const allSet = Array.from(card.querySelectorAll('.signoff')).every((b) =>
-        b.classList.contains('done') || b.classList.contains('changed'));
-      const btn = card.querySelector('.send-btn');
-      if (btn) btn.disabled = !allSet;
-    });
+  // Section auto-flow: collapse current, open next
+  function advanceFromSection(section) {
+    const idx = SECTION_ORDER.indexOf(section);
+    const currentDetails = document.getElementById(SECTION_DETAILS_ID[section]);
+    if (currentDetails) currentDetails.open = false;
+    const next = SECTION_ORDER[idx + 1];
+    if (next) {
+      const nextDetails = document.getElementById(SECTION_DETAILS_ID[next]);
+      if (nextDetails) {
+        nextDetails.open = true;
+        setTimeout(() => nextDetails.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+      }
+    } else {
+      // Past the last section — scroll to the Send box
+      const review = document.getElementById('sec-review');
+      if (review) {
+        review.open = true;
+        setTimeout(() => review.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+      }
+    }
   }
 
   function setActiveSister(name) {
@@ -2092,6 +2221,7 @@
     } else {
       banner.hidden = true;
     }
+    restoreInlineSignoffs();
   }
 
   function addRemoveHandlers(root) {
@@ -2166,33 +2296,27 @@
   const NAI_PHONE = '+12489181368';
 
   function sendToNai(btn) {
-    if (btn.disabled) return;
-    const card = btn.closest('.review-card');
-    const sister = btn.dataset.sister;
-    let text = sister + ' — Sign-off for the funeral family meal:\n';
-    const labels = { menu: 'Menu', guests: 'Guest List', location: 'Location' };
-    card.querySelectorAll('.signoff').forEach((block) => {
-      const section = block.dataset.section;
-      const isApproved = block.classList.contains('done');
-      const isChange = block.classList.contains('changed');
-      const note = (block.querySelector('.signoff-note').value || '').trim();
-      if (isApproved) {
-        text += '\n✓ ' + labels[section] + ': looks good';
-      } else if (isChange) {
-        text += '\n✎ ' + labels[section] + ': suggested change';
+    if (btn.disabled || !activeSister) return;
+    const state = signoffState[activeSister];
+    let text = activeSister + ' — Sign-off for the funeral family meal:\n';
+    SECTION_ORDER.forEach((section) => {
+      const s = state[section];
+      const note = (state[section + 'Note'] || '').trim();
+      if (s === 'approve') {
+        text += '\n✓ ' + SECTION_LABELS[section] + ': looks good';
+      } else if (s === 'change') {
+        text += '\n✎ ' + SECTION_LABELS[section] + ': suggested change';
         if (note) text += '\n   ' + note.split('\n').join('\n   ');
       }
     });
-    const extra = (card.querySelector('.signoff-extra-note').value || '').trim();
+    const extra = (state.extra || '').trim();
     if (extra) text += '\n\nAlso: ' + extra;
     text += '\n';
 
-    // Copy to clipboard quietly (belt and suspenders)
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).catch(() => {});
     }
 
-    // Open iMessage directly to Nai with the message pre-filled.
     const smsUrl = 'sms:' + NAI_PHONE + '?&body=' + encodeURIComponent(text);
     btn.textContent = 'Opening Messages…';
     btn.classList.add('copied');
@@ -2203,32 +2327,43 @@
     window.location.href = smsUrl;
   }
 
-  // ─── Sign-off button handlers ───
-  document.querySelectorAll('.signoff-btn').forEach((btn) => {
+  // ─── Inline sign-off button handlers (per section) ───
+  document.querySelectorAll('.inline-signoff .so-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const block = btn.closest('.signoff');
-      setSignoffState(block, btn.dataset.act);
-      refreshSendButtons();
-      if (btn.dataset.act === 'change') {
-        const note = block.querySelector('.signoff-note');
+      if (!activeSister) return;
+      const block = btn.closest('.inline-signoff');
+      const section = block.dataset.section;
+      const state = btn.dataset.act;
+      setSectionSignoff(section, state);
+      if (state === 'change') {
+        const note = block.querySelector('.so-note');
         setTimeout(() => note.focus(), 80);
-      } else {
-        // After approving, scroll to next signoff. If all 3 are done, scroll to Send button.
-        const card = block.closest('.review-card');
-        const allDone = Array.from(card.querySelectorAll('.signoff')).every((b) =>
-          b.classList.contains('done') || b.classList.contains('changed'));
-        if (allDone) {
-          const send = card.querySelector('.send-btn');
-          if (send) send.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          const next = block.nextElementSibling;
-          if (next && (next.classList.contains('signoff') || next.classList.contains('signoff-extra'))) {
-            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }
       }
+      // Auto-advance to next section regardless of approve/change
+      setTimeout(() => advanceFromSection(section), state === 'change' ? 400 : 200);
     });
   });
+
+  // ─── Inline note input listener — save text into state ───
+  document.querySelectorAll('.inline-signoff .so-note').forEach((ta) => {
+    ta.addEventListener('input', () => {
+      const block = ta.closest('.inline-signoff');
+      const section = block.dataset.section;
+      setSectionNote(section, ta.value);
+    });
+  });
+
+  // ─── Optional notes (Send box "Anything else?") ───
+  const extraNoteEl = document.getElementById('extraNote');
+  if (extraNoteEl) {
+    extraNoteEl.addEventListener('input', () => {
+      if (activeSister) signoffState[activeSister].extra = extraNoteEl.value;
+    });
+  }
+
+  // ─── Send button ───
+  const sendBtnEl = document.getElementById('sendBtn');
+  if (sendBtnEl) sendBtnEl.addEventListener('click', () => sendToNai(sendBtnEl));
 
   // ─── Apply suggestion handlers ───
   document.querySelectorAll('.apply-btn').forEach((btn) => {
@@ -2376,12 +2511,10 @@
       msg = "Location: " + txt + " (not Mom's house)";
     }
     if (msg && msg !== lastLoggedLocation[activeSister]) {
-      if (checked.value === 'moms') {
-        const block = getSisterCard(activeSister)?.querySelector('.signoff[data-section="location"]');
-        if (block) { setSignoffState(block, 'approve'); refreshSendButtons(); }
-      } else {
+      if (checked.value === 'other') {
         appendToSignoff(activeSister, 'location', msg);
       }
+      // For 'moms' (default), don't auto-approve — sister taps the inline "Yes" herself.
       lastLoggedLocation[activeSister] = msg;
     }
   }
@@ -2412,9 +2545,6 @@
   });
   document.addEventListener('click', () => {
     document.querySelectorAll('.info-icon.show').forEach(i => i.classList.remove('show'));
-  });
-  document.querySelectorAll('.send-btn').forEach((btn) => {
-    btn.addEventListener('click', () => sendToNai(btn));
   });
   document.querySelectorAll('.add-guest').forEach((btn) => {
     btn.addEventListener('click', () => addGuest(btn.dataset.add));

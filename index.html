@@ -115,6 +115,35 @@
 
   /* ─── Section heading ─── */
   .section { margin-bottom: 32px; }
+  details.section { display: block; }
+  details.section > summary {
+    list-style: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  details.section > summary::-webkit-details-marker { display: none; }
+  details.section > summary > h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  details.section > summary > h2::after {
+    content: "▾";
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  details.section:not([open]) > summary > h2::after {
+    transform: rotate(-90deg);
+  }
+  details.section:not([open]) > summary > h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
   h2 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
@@ -478,21 +507,30 @@
     padding: 14px 16px;
   }
   .total-row .label {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--ink);
+    font-weight: 500;
   }
-  .total-row.grand .label { color: var(--accent); }
+  .total-row.grand .label {
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
   .total-row .val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
+    color: var(--ink);
   }
   .total-row.grand .val {
-    font-size: 26px;
+    font-size: 24px;
+    font-weight: 700;
     color: var(--accent);
   }
 
@@ -1454,8 +1492,8 @@
     </div>
 
     <!-- Location -->
-    <div class="section" id="sec-location">
-      <h2>Dinner Location <span class="info-icon" tabindex="0" role="button" aria-label="Location info">i<span class="tooltip">Sisters &mdash; please confirm or change. If you select "Other," your update will land in your comment box.</span></span></h2>
+    <details class="section" id="sec-location" open>
+      <summary><h2>Dinner Location <span class="info-icon" tabindex="0" role="button" aria-label="Location info">i<span class="tooltip">Sisters &mdash; please confirm or change. If you select "Other," your update will land in your comment box.</span></span></h2></summary>
       <div class="loc-options">
         <label class="loc-option">
           <input type="radio" name="loc" value="moms" checked />
@@ -1469,11 +1507,11 @@
         </label>
       </div>
       <a href="#sec-menu" class="next-section-link">Next: The Menu</a>
-    </div>
+    </details>
 
     <!-- Menu -->
-    <div class="section" id="sec-menu">
-      <h2>The Menu</h2>
+    <details class="section" id="sec-menu" open>
+      <summary><h2>The Menu</h2></summary>
       <ul class="menu-list">
         <li>
           <div class="item-block">
@@ -1505,11 +1543,11 @@
         </li>
       </ul>
       <a href="#sec-guests" class="next-section-link">Next: Guest List</a>
-    </div>
+    </details>
 
     <!-- Guests -->
-    <div class="section" id="sec-guests">
-      <h2>Guest List &middot; 18 Attending of 19 Listed</h2>
+    <details class="section" id="sec-guests" open>
+      <summary><h2>Guest List &middot; 18 Attending of 19 Listed</h2></summary>
       <div class="guest-grid">
         <div class="guest-col">
           <h3 id="adultsHeader">Adults</h3>
@@ -1544,11 +1582,11 @@
         </div>
       </div>
       <a href="#sec-quote" class="next-section-link">Next: The Numbers</a>
-    </div>
+    </details>
 
     <!-- Quote -->
-    <div class="section" id="sec-quote">
-      <h2>Itemized Quote &middot; Troy MI Location <span class="info-icon" tabindex="0" role="button" aria-label="Source info">i<span class="tooltip">Live from your DoorDash cart (Troy MI, Maggiano's). Toggle Delivery / Pickup to preset fees; tip doesn't apply to pickup. Item prices marked * are estimated for the larger pan size &mdash; confirm with Maggiano's.</span></span></h2>
+    <details class="section" id="sec-quote">
+      <summary><h2>Itemized Quote &middot; Troy MI Location <span class="info-icon" tabindex="0" role="button" aria-label="Source info">i<span class="tooltip">Live from your DoorDash cart (Troy MI, Maggiano's). Toggle Delivery / Pickup to preset fees; tip doesn't apply to pickup. Item prices marked * are estimated for the larger pan size &mdash; confirm with Maggiano's.</span></span></h2></summary>
       <div class="quote" id="quote">
         <div class="quote-row head">
           <div>Item</div>
@@ -1739,19 +1777,19 @@
 
       <div class="quote-totals">
         <div class="total-row">
-          <span class="label">Food</span>
+          <span class="label">Subtotal</span>
           <span class="val" id="subtotal">$0.00</span>
         </div>
         <div class="total-row" id="deliveryRow">
-          <span class="label">Delivery</span>
+          <span class="label">Delivery fee</span>
           <span class="val"><input type="number" step="0.01" id="deliveryFee" inputmode="decimal" value="0.99" class="num-input" /></span>
         </div>
         <div class="total-row">
-          <span class="label">Service &amp; tax</span>
+          <span class="label">Fees &amp; estimated tax</span>
           <span class="val"><input type="number" step="0.01" id="feesTax" inputmode="decimal" value="41.53" class="num-input" /></span>
         </div>
         <div class="total-row" id="tipRow">
-          <span class="label">Driver tip (<input type="number" id="tipPct" inputmode="numeric" value="15" min="0" max="40" class="pct-input" />%)</span>
+          <span class="label">Dasher tip (<input type="number" id="tipPct" inputmode="numeric" value="15" min="0" max="40" class="pct-input" />%)</span>
           <span class="val" id="tip">$0.00</span>
         </div>
         <div class="total-row grand">
@@ -1759,7 +1797,7 @@
           <span class="val" id="grand">$0.00</span>
         </div>
         <div class="total-row">
-          <span class="label">Per person (<span id="attCount">18</span>)</span>
+          <span class="label">Per attending guest (<span id="attCount">18</span>)</span>
           <span class="val" id="perGuest">$0.00</span>
         </div>
       </div>
@@ -1777,11 +1815,11 @@
 
       </div>
       <a href="#sec-review" class="next-section-link">Next: Quick Sign-Off</a>
-    </div>
+    </details>
 
     <!-- Sister feedback -->
-    <div class="section" id="sec-review">
-      <h2>Sister Sign-Off &middot; 3 Quick Decisions</h2>
+    <details class="section" id="sec-review" open>
+      <summary><h2>Sister Sign-Off &middot; 3 Quick Decisions</h2></summary>
       <div class="review-grid">
 
         <div class="review-card" data-sister="Des">
@@ -1869,7 +1907,7 @@
         </div>
 
       </div>
-    </div>
+    </details>
 
     <div class="decision">
       <strong>Next Step</strong>
@@ -2129,6 +2167,8 @@
     nameInput.focus();
   }
 
+  const NAI_PHONE = '+12489181368';
+
   function sendToNai(btn) {
     if (btn.disabled) return;
     const card = btn.closest('.review-card');
@@ -2151,19 +2191,20 @@
     if (extra) text += '\n\nAlso: ' + extra;
     text += '\n';
 
-    const onCopied = () => {
-      btn.textContent = 'Copied! Paste in iMessage to Nai';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Send to Nai';
-        btn.classList.remove('copied');
-      }, 2800);
-    };
+    // Copy to clipboard quietly (belt and suspenders)
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onCopied, () => fallbackCopy(text, onCopied));
-    } else {
-      fallbackCopy(text, onCopied);
+      navigator.clipboard.writeText(text).catch(() => {});
     }
+
+    // Open iMessage directly to Nai with the message pre-filled.
+    const smsUrl = 'sms:' + NAI_PHONE + '?&body=' + encodeURIComponent(text);
+    btn.textContent = 'Opening Messages…';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Send to Nai';
+      btn.classList.remove('copied');
+    }, 2200);
+    window.location.href = smsUrl;
   }
 
   // ─── Sign-off button handlers ───

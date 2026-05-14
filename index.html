@@ -223,18 +223,20 @@
     margin: 0;
   }
   .people-list li {
-    padding: 5px 0;
-    font-size: 15px;
+    padding: 3px 0;
+    font-size: 14px;
+    line-height: 1.25;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
   .people-list .num {
     color: var(--accent);
     font-weight: 600;
-    min-width: 22px;
+    min-width: 18px;
     font-variant-numeric: tabular-nums;
-    font-size: 13px;
+    font-size: 12px;
+    opacity: 0.7;
   }
   .asterisk {
     color: var(--accent);
@@ -1423,24 +1425,26 @@
     .who-btn { width: 100%; padding: 16px; font-size: 14px; }
     .who-active { font-size: 16px; }
 
-    /* Guest list: bigger tap rows */
+    /* Guest list: compact rows */
     .people-list li {
-      padding: 12px 0;
-      font-size: 18px;
-      min-height: 40px;
+      padding: 4px 0;
+      font-size: 16px;
+      min-height: 30px;
+      line-height: 1.25;
     }
-    .people-list .num { font-size: 14px; min-width: 28px; }
+    .people-list .num { font-size: 12px; min-width: 22px; opacity: 0.7; }
     .remove-btn {
-      font-size: 24px;
-      padding: 6px 12px;
-      min-width: 40px;
-      min-height: 40px;
+      font-size: 20px;
+      padding: 4px 10px;
+      min-width: 32px;
+      min-height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .add-guest { padding: 16px; font-size: 13px; }
-    .guest-col h3 { font-size: 12px; }
+    .add-guest { padding: 12px; font-size: 12px; }
+    .guest-col h3 { font-size: 11px; margin-bottom: 8px; padding-bottom: 4px; }
+    .guest-grid { gap: 18px; }
 
     /* Pan-math note: readable */
     .pan-note { padding: 14px 16px; font-size: 15px; line-height: 1.55; }

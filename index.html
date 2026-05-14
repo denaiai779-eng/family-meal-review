@@ -1146,7 +1146,8 @@
     display: none;
   }
   body.as-Des .inline-signoff,
-  body.as-Dee .inline-signoff { display: block; }
+  body.as-Dee .inline-signoff,
+  body.as-Ashlee .inline-signoff { display: block; }
   .inline-signoff .so-q {
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
@@ -1632,6 +1633,7 @@
       <div class="who-buttons">
         <button type="button" class="who-btn" data-who="Des">I'm Des</button>
         <button type="button" class="who-btn" data-who="Dee">I'm Dee</button>
+        <button type="button" class="who-btn" data-who="Ashlee">I'm Ashlee</button>
         <button type="button" class="who-btn" data-who="">Just looking</button>
       </div>
       <div class="who-active" id="whoActive" hidden>
@@ -2170,6 +2172,7 @@
   const signoffState = {
     Des: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
     Dee: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
+    Ashlee: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
   };
 
   const SECTION_LABELS = { guests: 'Guest List', location: 'Location', menu: 'Menu' };
@@ -2290,7 +2293,7 @@
 
   function setActiveSister(name) {
     activeSister = name || null;
-    document.body.classList.remove('as-Des', 'as-Dee', 'as-none');
+    document.body.classList.remove('as-Des', 'as-Dee', 'as-Ashlee', 'as-none');
     if (activeSister) {
       document.body.classList.add('as-' + activeSister);
     } else {
@@ -2581,7 +2584,7 @@
   }
 
   // ─── Location handling ───
-  const lastLoggedLocation = { Des: '', Dee: '' };
+  const lastLoggedLocation = { Des: '', Dee: '', Ashlee: '' };
   function logLocationChange() {
     if (!activeSister) return;
     const checked = document.querySelector('input[name="loc"]:checked');

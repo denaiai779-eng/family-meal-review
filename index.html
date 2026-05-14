@@ -255,11 +255,15 @@
     -webkit-appearance: none;
   }
   .name-input:focus { outline: none; background: #fafafa; }
-  .not-attending .name-text {
+  .not-attending .name-text,
+  .crossed-off .name-text {
     text-decoration: line-through;
     color: var(--ink-soft);
     opacity: 0.7;
   }
+  .crossed-off { opacity: 0.65; }
+  .crossed-off .remove-btn { color: var(--accent); }
+  .crossed-off .remove-btn::before { content: ""; }
   .na-tag {
     display: inline-block;
     font-size: 9px;
@@ -1996,15 +2000,16 @@
 
   function countAttending() {
     let adults = 0, kids = 0, adultsAtt = 0, kidsAtt = 0;
+    const skip = (li) => li.classList.contains('not-attending') || li.classList.contains('crossed-off');
     document.querySelectorAll('#adultsList li').forEach((li) => {
       const cnt = parseInt(li.dataset.count, 10) || 1;
       adults += cnt;
-      if (!li.classList.contains('not-attending')) adultsAtt += cnt;
+      if (!skip(li)) adultsAtt += cnt;
     });
     document.querySelectorAll('#kidsList li').forEach((li) => {
       const cnt = parseInt(li.dataset.count, 10) || 1;
       kids += cnt;
-      if (!li.classList.contains('not-attending')) kidsAtt += cnt;
+      if (!skip(li)) kidsAtt += cnt;
     });
     return { adults, kids, adultsAtt, kidsAtt, totalAtt: adultsAtt + kidsAtt };
   }
@@ -2245,15 +2250,15 @@
     root.querySelectorAll('.remove-btn').forEach((btn) => {
       btn.onclick = () => {
         const li = btn.closest('li');
-        const list = li.parentElement;
         const nameEl = li.querySelector('.name-text');
         const guestName = nameEl ? ((nameEl.value !== undefined ? nameEl.value : nameEl.textContent) || '').trim() : '';
-        li.remove();
-        renumber(list);
+        const wasCrossed = li.classList.contains('crossed-off');
+        li.classList.toggle('crossed-off');
         updateCounts();
         recalcQuote();
         if (guestName && activeSister) {
-          appendToSignoff(activeSister, 'guests', 'Remove: ' + guestName);
+          const action = wasCrossed ? 'Keep: ' : 'Remove: ';
+          appendToSignoff(activeSister, 'guests', action + guestName);
         }
       };
     });

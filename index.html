@@ -1591,6 +1591,52 @@
       </div>
     </div>
 
+    <!-- Guests -->
+    <details class="section" id="sec-guests" open>
+      <summary><h2>Guest List &middot; 18 Attending of 19 Listed</h2></summary>
+      <div class="guest-grid">
+        <div class="guest-col">
+          <h3 id="adultsHeader">Adults</h3>
+          <ol class="people-list" id="adultsList" data-group="adult">
+            <li><span class="num">1.</span><span class="name-text">Des</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">2.</span><span class="name-text">Cory</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">3.</span><span class="name-text">Dee</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">4.</span><span class="name-text">Denai</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">5.</span><span class="name-text">Kayla</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">6.</span><span class="name-text">Faith</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">7.</span><span class="name-text">King</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">8.</span><span class="name-text">Cindy</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">9.</span><span class="name-text">Fitzgerald</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">10.</span><span class="name-text">Jeremiah</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">11.</span><span class="name-text">Keda</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">12.</span><span class="name-text">Layla</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">13.</span><span class="name-text">Dad</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">14.</span><span class="name-text">Jer grandma</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">15.</span><span class="name-text">Jer grandpa</span><button class="remove-btn" title="remove">&times;</button></li>
+          </ol>
+          <button class="add-guest" data-add="adult">+ Add Adult</button>
+        </div>
+        <div class="guest-col">
+          <h3 id="kidsHeader">Kids (3 attending of 4)</h3>
+          <ol class="people-list" id="kidsList" data-group="kid">
+            <li><span class="num">1.</span><span class="name-text">Ava</span><span class="asterisk">*</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li class="not-attending"><span class="num">2.</span><span class="name-text">Emory</span><span class="na-tag">not attending</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">3.</span><span class="name-text">Jackson</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">4.</span><span class="name-text">Brayden</span><button class="remove-btn" title="remove">&times;</button></li>
+          </ol>
+          <button class="add-guest" data-add="kid">+ Add Kid</button>
+        </div>
+      </div>
+      <div class="inline-signoff" data-section="guests">
+        <div class="so-q">Guest list &mdash; looks good?</div>
+        <div class="so-actions">
+          <button type="button" class="so-btn approve" data-act="approve">&check; Yes</button>
+          <button type="button" class="so-btn change" data-act="change">Suggest change</button>
+        </div>
+        <textarea class="so-note" hidden placeholder="names to add or remove"></textarea>
+      </div>
+    </details>
+
     <!-- Location -->
     <details class="section" id="sec-location" open>
       <summary><h2>Dinner Location <span class="info-icon" tabindex="0" role="button" aria-label="Location info">i<span class="tooltip">Sisters &mdash; please confirm or change. If you select "Other," your update will land in your comment box.</span></span></h2></summary>
@@ -1668,52 +1714,6 @@
           <button type="button" class="so-btn change" data-act="change">Suggest change</button>
         </div>
         <textarea class="so-note" hidden placeholder="what would you change?"></textarea>
-      </div>
-    </details>
-
-    <!-- Guests -->
-    <details class="section" id="sec-guests" open>
-      <summary><h2>Guest List &middot; 18 Attending of 19 Listed</h2></summary>
-      <div class="guest-grid">
-        <div class="guest-col">
-          <h3 id="adultsHeader">Adults</h3>
-          <ol class="people-list" id="adultsList" data-group="adult">
-            <li><span class="num">1.</span><span class="name-text">Des</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">2.</span><span class="name-text">Cory</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">3.</span><span class="name-text">Dee</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">4.</span><span class="name-text">Denai</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">5.</span><span class="name-text">Kayla</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">6.</span><span class="name-text">Faith</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">7.</span><span class="name-text">King</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">8.</span><span class="name-text">Cindy</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">9.</span><span class="name-text">Fitzgerald</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">10.</span><span class="name-text">Jeremiah</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">11.</span><span class="name-text">Keda</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">12.</span><span class="name-text">Layla</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">13.</span><span class="name-text">Dad</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">14.</span><span class="name-text">Jer grandma</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">15.</span><span class="name-text">Jer grandpa</span><button class="remove-btn" title="remove">&times;</button></li>
-          </ol>
-          <button class="add-guest" data-add="adult">+ Add Adult</button>
-        </div>
-        <div class="guest-col">
-          <h3 id="kidsHeader">Kids (3 attending of 4)</h3>
-          <ol class="people-list" id="kidsList" data-group="kid">
-            <li><span class="num">1.</span><span class="name-text">Ava</span><span class="asterisk">*</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li class="not-attending"><span class="num">2.</span><span class="name-text">Emory</span><span class="na-tag">not attending</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">3.</span><span class="name-text">Jackson</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">4.</span><span class="name-text">Brayden</span><button class="remove-btn" title="remove">&times;</button></li>
-          </ol>
-          <button class="add-guest" data-add="kid">+ Add Kid</button>
-        </div>
-      </div>
-      <div class="inline-signoff" data-section="guests">
-        <div class="so-q">Guest list &mdash; looks good?</div>
-        <div class="so-actions">
-          <button type="button" class="so-btn approve" data-act="approve">&check; Yes</button>
-          <button type="button" class="so-btn change" data-act="change">Suggest change</button>
-        </div>
-        <textarea class="so-note" hidden placeholder="names to add or remove"></textarea>
       </div>
     </details>
 
@@ -1942,9 +1942,9 @@
       <summary><h2>Send Your Feedback to Nai</h2></summary>
       <div class="send-box">
         <div class="signoff-status">
+          <span class="status-pill" data-status="guests">Guests: <em>pending</em></span>
           <span class="status-pill" data-status="location">Location: <em>pending</em></span>
           <span class="status-pill" data-status="menu">Menu: <em>pending</em></span>
-          <span class="status-pill" data-status="guests">Guests: <em>pending</em></span>
         </div>
         <div class="signoff-extra">
           <label for="extraNote">Anything else? (optional)</label>
@@ -2088,9 +2088,9 @@
     Dee: { location: null, menu: null, guests: null, locationNote: '', menuNote: '', guestsNote: '', extra: '' },
   };
 
-  const SECTION_LABELS = { location: 'Location', menu: 'Menu', guests: 'Guest List' };
-  const SECTION_ORDER = ['location', 'menu', 'guests'];
-  const SECTION_DETAILS_ID = { location: 'sec-location', menu: 'sec-menu', guests: 'sec-guests' };
+  const SECTION_LABELS = { guests: 'Guest List', location: 'Location', menu: 'Menu' };
+  const SECTION_ORDER = ['guests', 'location', 'menu'];
+  const SECTION_DETAILS_ID = { guests: 'sec-guests', location: 'sec-location', menu: 'sec-menu' };
 
   function getInlineBlock(section) {
     return document.querySelector('.inline-signoff[data-section="' + section + '"]');
@@ -2557,24 +2557,6 @@
     btn.addEventListener('click', () => setFulfillment(btn.dataset.mode));
   });
   addRemoveHandlers(document);
-
-  // When the Guest List section collapses, auto-expand the Itemized Quote
-  // so the user is led to the next decision without hunting for it.
-  const guestsDetails = document.getElementById('sec-guests');
-  const quoteDetails = document.getElementById('sec-quote');
-  if (guestsDetails && quoteDetails) {
-    let prevOpen = guestsDetails.open;
-    guestsDetails.addEventListener('toggle', () => {
-      const nowOpen = guestsDetails.open;
-      if (prevOpen && !nowOpen && !quoteDetails.open) {
-        quoteDetails.open = true;
-        setTimeout(() => {
-          quoteDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 120);
-      }
-      prevOpen = nowOpen;
-    });
-  }
 
   // Initial render
   updateCounts();

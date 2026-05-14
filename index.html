@@ -1395,7 +1395,7 @@
       <div class="info-strip">
         <span>Saturday, May 16, 2026</span>
         <span class="dot">&middot;</span>
-        <span data-info="attending">19 attending</span>
+        <span data-info="attending">18 attending</span>
         <span class="dot">&middot;</span>
         <span>Maggiano's catering</span>
       </div>
@@ -1468,7 +1468,7 @@
 
     <!-- Guests -->
     <div class="section" id="sec-guests">
-      <h2>Guest List &middot; 19 Attending of 20 Listed</h2>
+      <h2>Guest List &middot; 18 Attending of 19 Listed</h2>
       <div class="guest-grid">
         <div class="guest-col">
           <h3 id="adultsHeader">Adults</h3>
@@ -1488,7 +1488,6 @@
             <li><span class="num">13.</span><span class="name-text">Dad</span><button class="remove-btn" title="remove">&times;</button></li>
             <li><span class="num">14.</span><span class="name-text">Jer grandma</span><button class="remove-btn" title="remove">&times;</button></li>
             <li><span class="num">15.</span><span class="name-text">Jer grandpa</span><button class="remove-btn" title="remove">&times;</button></li>
-            <li><span class="num">16.</span><span class="name-text">Ashlee, First Lady</span><button class="remove-btn" title="remove">&times;</button></li>
           </ol>
           <button class="add-guest" data-add="adult">+ Add Adult</button>
         </div>
@@ -2188,15 +2187,24 @@
       document.querySelectorAll('[data-row][data-category="' + cat + '"]').forEach((row, idx) => {
         if (!row.classList.contains('zero')) return;
         const name = row.querySelector('.item-name')?.firstChild?.textContent?.trim() || 'Item';
-        const smallEl = row.querySelector('input[data-small-price]');
-        const smallPrice = smallEl ? smallEl.dataset.smallPrice : null;
-        if (!smallPrice) return;
         const rowId = row.dataset.item || (cat + '-' + idx);
         if (!row.dataset.item) row.dataset.item = rowId;
-        const opt = document.createElement('option');
-        opt.value = rowId;
-        opt.textContent = name + ' — small $' + smallPrice;
-        sel.appendChild(opt);
+        const smallEl = row.querySelector('input[data-small-price]');
+        const largeEl = row.querySelector('input[data-large-price]');
+        if (smallEl) {
+          const opt = document.createElement('option');
+          opt.value = rowId + '|small';
+          opt.textContent = name + ' — Small pan $' + smallEl.dataset.smallPrice;
+          sel.appendChild(opt);
+        }
+        if (largeEl) {
+          // Mark with * if the large price is an estimate (parent .qty-cell has .price.est)
+          const isEst = !!largeEl.parentElement.querySelector('.price.est');
+          const opt = document.createElement('option');
+          opt.value = rowId + '|large';
+          opt.textContent = name + ' — Large pan $' + largeEl.dataset.largePrice + (isEst ? ' *' : '');
+          sel.appendChild(opt);
+        }
       });
       // Hide the picker entirely if there are no options to add
       const pickerWrap = sel.closest('.add-item-wrap');
@@ -2206,11 +2214,14 @@
   function handleCatPickerChange(e) {
     const sel = e.target;
     if (!sel.value) return;
-    const target = document.querySelector('[data-row][data-item="' + sel.value + '"]');
+    const [rowId, size] = sel.value.split('|');
+    const target = document.querySelector('[data-row][data-item="' + rowId + '"]');
     if (target) {
       target.classList.remove('zero');
-      const smallQty = target.querySelector('input[data-small-price]');
-      if (smallQty) smallQty.value = 1;
+      const qtyEl = size === 'large'
+        ? target.querySelector('input[data-large-price]')
+        : target.querySelector('input[data-small-price]');
+      if (qtyEl) qtyEl.value = 1;
       recalcQuote();
       populateAddItemDropdown();
     }

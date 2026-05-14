@@ -20,7 +20,14 @@
     --rule-soft: #e0d5e8;
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  input, textarea, select { max-width: 100%; }
+  img { max-width: 100%; height: auto; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink);
@@ -963,7 +970,7 @@
     pointer-events: auto;
   }
   @media (max-width: 560px) {
-    .info-icon .tooltip { width: 240px; left: auto; right: -10px; transform: none; }
+    .info-icon .tooltip { width: min(240px, calc(100vw - 48px)); left: auto; right: 4px; transform: none; }
     .info-icon .tooltip::before { left: auto; right: 14px; transform: none; }
   }
 

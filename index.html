@@ -1506,7 +1506,6 @@
           <input type="text" class="loc-other" placeholder="enter address or place" disabled />
         </label>
       </div>
-      <a href="#sec-menu" class="next-section-link">Next: The Menu</a>
     </details>
 
     <!-- Menu -->
@@ -1542,7 +1541,6 @@
           <span class="size">Small pan</span>
         </li>
       </ul>
-      <a href="#sec-guests" class="next-section-link">Next: Guest List</a>
     </details>
 
     <!-- Guests -->
@@ -1581,7 +1579,6 @@
           <button class="add-guest" data-add="kid">+ Add Kid</button>
         </div>
       </div>
-      <a href="#sec-quote" class="next-section-link">Next: The Numbers</a>
     </details>
 
     <!-- Quote -->
@@ -1814,7 +1811,6 @@
         </div>
 
       </div>
-      <a href="#sec-review" class="next-section-link">Next: Quick Sign-Off</a>
     </details>
 
     <!-- Sister feedback -->
@@ -2431,6 +2427,24 @@
     btn.addEventListener('click', () => setFulfillment(btn.dataset.mode));
   });
   addRemoveHandlers(document);
+
+  // When the Guest List section collapses, auto-expand the Itemized Quote
+  // so the user is led to the next decision without hunting for it.
+  const guestsDetails = document.getElementById('sec-guests');
+  const quoteDetails = document.getElementById('sec-quote');
+  if (guestsDetails && quoteDetails) {
+    let prevOpen = guestsDetails.open;
+    guestsDetails.addEventListener('toggle', () => {
+      const nowOpen = guestsDetails.open;
+      if (prevOpen && !nowOpen && !quoteDetails.open) {
+        quoteDetails.open = true;
+        setTimeout(() => {
+          quoteDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+      }
+      prevOpen = nowOpen;
+    });
+  }
 
   // Initial render
   updateCounts();

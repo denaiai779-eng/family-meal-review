@@ -1,0 +1,2348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Funeral Meal — Pre-Order Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3eef5;
+    --paper-edge: #e8e1ec;
+    --card: #ffffff;
+    --ink: #2f2945;
+    --ink-soft: #6a5f7d;
+    --accent: #7a6a96;
+    --accent-soft: #b9a8d4;
+    --rule: #c8bdd6;
+    --rule-soft: #e0d5e8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-edge) 100%);
+    min-height: 100vh;
+    padding: 40px 20px 64px;
+    line-height: 1.5;
+  }
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 30px 60px -30px rgba(46,42,37,0.18);
+    padding: 40px 44px 40px;
+  }
+
+  /* ─── Header ─── */
+  .header { margin-bottom: 18px; }
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.05;
+    margin: 0 0 8px;
+    letter-spacing: -0.3px;
+  }
+  .info-strip {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    line-height: 1.4;
+  }
+  .info-strip .dot { color: var(--rule); }
+  .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  /* ─── At-a-glance stats ─── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+    margin-bottom: 36px;
+  }
+  .stat {
+    background: var(--paper);
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .stat .n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .stat .l {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ─── Section heading ─── */
+  .section { margin-bottom: 32px; }
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ─── Menu ─── */
+  .menu-list { list-style: none; padding: 0; margin: 0; }
+  .menu-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .menu-list li:last-child { border-bottom: none; }
+  .menu-list .item-block { flex: 1; padding-right: 14px; }
+  .menu-list .item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    display: block;
+    line-height: 1.15;
+  }
+  .menu-list .item-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .menu-list .size {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: 6px;
+  }
+
+  /* ─── Guests ─── */
+  .guest-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+  }
+  .guest-col h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .people-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .people-list li {
+    padding: 5px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .people-list .num {
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 22px;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+  }
+  .asterisk {
+    color: var(--accent);
+    font-weight: 700;
+    margin-left: 2px;
+  }
+  .name-input {
+    flex: 1;
+    border: 1px solid var(--accent);
+    background: #fff;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--ink);
+    -webkit-appearance: none;
+  }
+  .name-input:focus { outline: none; background: #fafafa; }
+  .not-attending .name-text {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+  .na-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--rule-soft);
+    padding: 1px 6px;
+    margin-left: 4px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .footnote {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .footnote .asterisk { font-style: normal; margin-right: 4px; }
+
+  /* ─── Quote table ─── */
+  .quote {
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 14px;
+  }
+  .quote-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1.1fr 1.1fr 0.9fr 28px;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 14px;
+    gap: 10px;
+  }
+  .row-remove {
+    background: transparent;
+    border: none;
+    color: var(--rule);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 6px;
+    line-height: 1;
+    border-radius: 3px;
+  }
+  .row-remove:hover { color: var(--accent); background: rgba(122,106,150,0.08); }
+  .quote-row.head .row-remove-spacer { visibility: hidden; }
+  .qty-cell {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+  }
+  .qty-cell .price {
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    min-width: 52px;
+    text-align: right;
+  }
+  .qty-cell .price.est::after {
+    content: "*";
+    color: var(--accent);
+    margin-left: 1px;
+  }
+  .qty-cell .x { color: var(--accent-soft); font-size: 11px; }
+  .qty-cell .qty {
+    width: 42px;
+    text-align: center;
+    border: 1px solid var(--rule-soft);
+    border-radius: 2px;
+    font-size: 13px;
+    padding: 4px;
+    background: #fafafa;
+    font-family: inherit;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .qty-cell .qty:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .quote-row.zero { display: none; }
+  .quote-row:last-child { border-bottom: none; }
+  .quote-row.head {
+    background: rgba(122,106,150,0.08);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    padding: 10px 14px;
+  }
+  .quote-row .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .size-pills { display: flex; gap: 4px; }
+  .size-pill {
+    flex: 1;
+    background: #fff;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 6px 8px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    line-height: 1.1;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.12s;
+    font-variant-numeric: tabular-nums;
+  }
+  .size-pill .pill-label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+  .size-pill.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .size-pill.active .pill-label { color: rgba(255,255,255,0.8); }
+  .size-pill:hover:not(.active) { background: rgba(122,106,150,0.08); }
+  .size-pill.disabled { opacity: 0.35; cursor: not-allowed; }
+
+  .qty-input {
+    width: 100%;
+    text-align: center;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 6px 4px;
+    background: #fafafa;
+    font-family: inherit;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .qty-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  .line-total {
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .group-row {
+    background: rgba(122,106,150,0.04);
+    padding: 8px 14px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .add-item-wrap {
+    padding: 14px;
+    border-bottom: 1px solid var(--rule-soft);
+    background: rgba(122,106,150,0.03);
+  }
+  .add-item-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--rule);
+    color: var(--accent);
+    padding: 10px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .add-item-btn:hover { background: rgba(122,106,150,0.08); }
+  .add-item-form {
+    display: none;
+    grid-template-columns: 2fr 1fr 0.8fr auto auto;
+    gap: 8px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .add-item-form.open { display: grid; }
+  .add-item-form input {
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 6px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #fff;
+  }
+  .add-item-form input:focus { outline: none; border-color: var(--accent); }
+  .add-item-form button {
+    padding: 6px 12px;
+    border-radius: 3px;
+    border: none;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .add-item-form .save { background: var(--accent); color: #fff; }
+  .add-item-form .cancel { background: transparent; border: 1px solid var(--rule); color: var(--ink-soft); }
+  .remove-row {
+    background: transparent;
+    border: none;
+    color: var(--rule);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+  }
+  .remove-row:hover { color: var(--accent); }
+
+  .quote-totals {
+    margin-top: 0;
+    border: 1px solid var(--rule);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    background: rgba(122,106,150,0.04);
+    overflow: hidden;
+  }
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 14px;
+  }
+  .total-row:last-child {
+    border-bottom: none;
+    background: rgba(122,106,150,0.1);
+    padding: 14px 16px;
+  }
+  .total-row .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .total-row.grand .label { color: var(--accent); }
+  .total-row .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .total-row.grand .val {
+    font-size: 26px;
+    color: var(--accent);
+  }
+
+  /* Add guest button & remove */
+  .add-guest {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px dashed var(--rule);
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .add-guest:hover { background: rgba(122,106,150,0.08); }
+  .remove-btn {
+    background: transparent;
+    border: none;
+    color: var(--rule);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+    margin-left: auto;
+    line-height: 1;
+  }
+  .remove-btn:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .quote-row { grid-template-columns: 1.6fr 0.8fr 0.8fr 1fr 0.9fr; font-size: 12px; }
+    .quote-row.head { font-size: 8px; }
+  }
+
+  .num-input {
+    width: 88px;
+    text-align: right;
+    border: 1px solid var(--rule-soft);
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 4px 6px;
+    background: #fafafa;
+    font-family: inherit;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .num-input:focus, .pct-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .pct-input {
+    width: 42px;
+    text-align: center;
+    border: 1px solid var(--rule-soft);
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 2px 4px;
+    background: #fafafa;
+    font-family: inherit;
+  }
+
+  .fulfillment-toggle {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .fulfillment-toggle button {
+    background: #fff;
+    border: none;
+    padding: 8px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .fulfillment-toggle button + button { border-left: 1px solid var(--rule); }
+  .fulfillment-toggle button.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  .fulfillment-toggle button:not(.active):hover {
+    background: rgba(122,106,150,0.08);
+  }
+  .pickup-mode #deliveryRow,
+  .pickup-mode #tipRow {
+    opacity: 0.4;
+  }
+
+  .add-item-wrap {
+    padding: 12px 14px;
+    background: rgba(122,106,150,0.04);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .add-item-wrap select {
+    width: 100%;
+    padding: 11px 36px 11px 14px;
+    border: 1px dashed var(--accent);
+    border-radius: 3px;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+  .add-item-wrap select:focus { outline: none; border-color: var(--accent); background: rgba(122,106,150,0.06); }
+
+  /* Hide pickup-person except in pickup mode */
+  .pickup-person[hidden] { display: none !important; }
+  body:not(.pickup-mode) .pickup-person { display: none !important; }
+
+  .pickup-person {
+    margin-top: 12px;
+    padding: 14px 16px;
+    background: rgba(122,106,150,0.06);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .pickup-person label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .pickup-person input {
+    flex: 1;
+    min-width: 180px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink);
+    background: #fff;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+  }
+  .pickup-person input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* ─── Pan note ─── */
+  .pan-note {
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(122,106,150,0.06);
+    border-left: 3px solid var(--accent);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-radius: 2px;
+  }
+  .pan-note strong { color: var(--accent); font-weight: 600; letter-spacing: 0.04em; }
+
+  /* ─── Sister feedback ─── */
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 20px 22px;
+  }
+  .review-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .review-card .role {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .prompt {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 14px 0 4px;
+    font-weight: 600;
+  }
+  textarea.answer {
+    width: 100%;
+    min-height: 56px;
+    padding: 10px 12px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+    background: #fafafa;
+    box-sizing: border-box;
+    resize: vertical;
+    display: block;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+  }
+  textarea.answer::placeholder {
+    color: #b9b1c2;
+    font-style: italic;
+    opacity: 1;
+  }
+  textarea.answer:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  .send-btn {
+    margin-top: 22px;
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 13px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    -webkit-appearance: none;
+  }
+  .send-btn:hover { background: #6a5985; }
+  .send-btn.copied { background: #4a8b5e; }
+
+  /* ─── Location ─── */
+  .loc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .loc-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 9px 12px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    transition: all 0.12s;
+  }
+  .loc-option:has(input:checked) {
+    border-color: var(--accent);
+    background: rgba(122,106,150,0.06);
+  }
+  .loc-option input[type="radio"] {
+    accent-color: var(--accent);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .loc-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .loc-tag {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(122,106,150,0.1);
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .loc-option-other { flex-wrap: wrap; }
+  .loc-other {
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    flex: 1;
+    min-width: 180px;
+    background: #fafafa;
+    color: var(--ink);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+  .loc-other:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  .loc-other:disabled { background: #f0eef2; opacity: 0.55; }
+
+  /* ─── Who selector ─── */
+  .who-selector {
+    background: rgba(122,106,150,0.06);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .who-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .who-btn {
+    background: #fff;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  .who-btn:hover { background: rgba(122,106,150,0.1); }
+  .who-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .who-active {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .who-active strong { color: var(--accent); font-style: normal; font-weight: 600; }
+  .who-change {
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: inherit;
+    font-style: italic;
+    font-size: 14px;
+    padding: 0 4px;
+  }
+
+  /* Visibility while a sister is active */
+  body.as-Des .review-card[data-sister="Dee"],
+  body.as-Dee .review-card[data-sister="Des"] {
+    opacity: 0.4;
+    pointer-events: none;
+    filter: saturate(0.5);
+  }
+  body.as-Des .review-card[data-sister="Dee"] .send-btn,
+  body.as-Dee .review-card[data-sister="Des"] .send-btn { display: none; }
+
+  /* "Just looking" — lock both cards until sister is picked */
+  body.as-none .review-card { opacity: 0.5; filter: saturate(0.5); position: relative; }
+  body.as-none .review-card .signoff-btn,
+  body.as-none .review-card .send-btn,
+  body.as-none .review-card textarea {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  body.as-none .review-card::before {
+    content: "Tap your name above to begin";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  /* Pickup mode: dimmed delivery & tip rows are also un-tappable */
+  body.pickup-mode #deliveryRow,
+  body.pickup-mode #tipRow {
+    pointer-events: none;
+  }
+  /* Lock location radios while no sister is active */
+  body.as-none .loc-options { pointer-events: none; opacity: 0.6; }
+
+  /* ─── Info tooltip ─── */
+  .info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    margin-left: 8px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    user-select: none;
+  }
+  .info-icon .tooltip {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 20;
+    text-align: left;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.3);
+  }
+  .info-icon .tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: var(--ink);
+  }
+  .info-icon:hover .tooltip,
+  .info-icon.show .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media (max-width: 560px) {
+    .info-icon .tooltip { width: 240px; left: auto; right: -10px; transform: none; }
+    .info-icon .tooltip::before { left: auto; right: 14px; transform: none; }
+  }
+
+  /* ─── Smart suggestions ─── */
+  .suggestions {
+    margin-top: 18px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: rgba(122,106,150,0.04);
+    padding: 16px 20px 18px;
+  }
+  .suggestions h3 {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  .suggestion {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    align-items: flex-start;
+  }
+  .suggestion:first-of-type { padding-top: 6px; }
+  .suggestion:last-child { border-bottom: none; padding-bottom: 0; }
+  .suggestion .badge {
+    flex: 0 0 auto;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 3px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+  .suggestion .badge.warn {
+    color: #8b6f1c;
+    border-color: #d9b86c;
+    background: #fbf3df;
+  }
+  .suggestion strong { font-weight: 600; }
+  .suggestion .body { flex: 1; }
+  .suggestion .why {
+    display: block;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    margin-top: 3px;
+  }
+  .suggestion .apply-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    -webkit-appearance: none;
+  }
+  .suggestion .apply-btn:hover { background: #6a5985; }
+  .suggestion.applied {
+    opacity: 0.55;
+  }
+  .suggestion.applied .apply-btn {
+    background: #4a8b5e;
+    pointer-events: none;
+  }
+  .suggestion.applied .apply-btn::before { content: "✓ "; }
+
+  /* ─── Sign-off steps in sister cards ─── */
+  html { scroll-behavior: smooth; }
+
+  .signoff-count {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .signoff {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .signoff:last-of-type { border-bottom: none; }
+  .signoff-num {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .signoff-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .signoff-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .signoff-btn {
+    flex: 1;
+    padding: 14px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    background: #fff;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s;
+    -webkit-appearance: none;
+    min-height: 48px;
+  }
+  .signoff-btn:hover { background: rgba(122,106,150,0.08); }
+  .signoff-btn.active.approve { background: #4a8b5e; color: #fff; border-color: #4a8b5e; }
+  .signoff-btn.active.change { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .signoff-note {
+    width: 100%;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    min-height: 56px;
+    background: #fafafa;
+    box-sizing: border-box;
+    resize: vertical;
+    -webkit-appearance: none;
+  }
+  .signoff-note:focus { background: #fff; border-color: var(--accent); outline: none; }
+  .signoff.done .signoff-q::before { content: "✓ "; color: #4a8b5e; font-weight: 700; }
+  .signoff.changed .signoff-q::before { content: "✎ "; color: var(--accent); font-weight: 700; }
+
+  .signoff-extra { padding: 14px 0 6px; }
+  .signoff-extra label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .signoff-extra-note {
+    width: 100%;
+    border: 1px solid var(--rule-soft);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    min-height: 50px;
+    background: #fafafa;
+    box-sizing: border-box;
+    resize: vertical;
+    -webkit-appearance: none;
+  }
+  .signoff-extra-note:focus { background: #fff; border-color: var(--accent); outline: none; }
+
+  .send-btn:disabled {
+    background: #c9bcd9;
+    cursor: not-allowed;
+  }
+  .send-btn:disabled:hover { background: #c9bcd9; }
+
+  /* ─── Section nav (jump to next) ─── */
+  .next-section-link {
+    display: block;
+    margin: 18px auto 0;
+    max-width: 320px;
+    padding: 13px 22px;
+    background: #fff;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.12s;
+  }
+  .next-section-link:hover { background: var(--accent); color: #fff; }
+  .next-section-link::after { content: "  ↓"; }
+
+  /* ─── Decision footer ─── */
+  .decision {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .decision strong {
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  [contenteditable="true"]:focus { outline: none; }
+
+  .legend {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .legend .asterisk { font-style: normal; }
+
+  @media (max-width: 640px) {
+    .sheet { padding: 28px 22px; }
+    .stats { grid-template-columns: 1fr; }
+    .people-list { column-count: 1; }
+    .review-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ───────── Mobile pass ───────── */
+  @media (max-width: 640px) {
+    body { padding: 12px 6px 36px; -webkit-text-size-adjust: 100%; }
+    .sheet {
+      padding: 24px 16px 28px;
+      max-width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 12px 30px -16px rgba(46,42,37,0.18);
+    }
+
+    h1 { font-size: 30px; }
+    .sub { font-size: 15px; }
+
+    /* Stats: tighter, smaller text */
+    .stat { padding: 12px 8px; }
+    .stat .n { font-size: 22px; }
+    .stat .l { font-size: 8px; letter-spacing: 0.22em; }
+
+    /* Sections: tighter spacing */
+    .section { margin-bottom: 26px; }
+    h2 {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      margin: 0 0 12px;
+    }
+
+    /* Menu list: cleaner spacing */
+    .menu-list li { padding: 10px 0; }
+    .menu-list .item { font-size: 17px; }
+
+    /* Location: full bleed cards */
+    .loc-option { padding: 14px; }
+    .loc-other { width: 100%; flex-basis: 100%; }
+
+    /* Who selector: stack buttons full width */
+    .who-selector { padding: 14px 16px; margin-bottom: 22px; }
+    .who-buttons { flex-direction: column; gap: 6px; }
+    .who-btn { width: 100%; padding: 14px; font-size: 12px; }
+
+    /* Guest list: bigger tap rows */
+    .people-list li {
+      padding: 10px 0;
+      font-size: 16px;
+      min-height: 36px;
+    }
+    .people-list .num { font-size: 13px; min-width: 26px; }
+    .remove-btn {
+      font-size: 22px;
+      padding: 6px 12px;
+      min-width: 36px;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .add-guest { padding: 14px; font-size: 12px; }
+
+    /* Pan-math note: readable */
+    .pan-note { padding: 12px 14px; font-size: 13px; line-height: 1.55; }
+
+    /* Quote rows: stack as cards on mobile */
+    .quote-row.head { display: none; }
+    .quote-row {
+      display: block;
+      padding: 14px;
+      font-size: 14px;
+    }
+    .quote-row .item-name {
+      font-size: 17px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .quote-row .qty-cell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      gap: 8px;
+    }
+    .quote-row .qty-cell::before {
+      content: "Small pan";
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      flex: 1;
+    }
+    .quote-row .qty-cell:nth-of-type(3)::before {
+      content: "Large pan";
+    }
+    .quote-row .qty-cell .price {
+      min-width: auto;
+      font-size: 15px;
+      color: var(--ink);
+      margin-right: 2px;
+    }
+    .quote-row .qty-cell .qty {
+      width: 56px;
+      height: 38px;
+      font-size: 16px;
+      padding: 6px;
+    }
+    .quote-row .line-total {
+      text-align: right;
+      border-top: 1px dotted var(--rule-soft);
+      padding-top: 10px;
+      margin-top: 6px;
+      font-size: 18px;
+    }
+    .group-row { font-size: 8px; letter-spacing: 0.28em; padding: 8px 14px; }
+
+    /* Quote totals + inputs */
+    .total-row { padding: 12px 14px; font-size: 13px; }
+    .total-row.grand { padding: 16px 14px; }
+    .total-row .val { font-size: 17px; }
+    .total-row.grand .val { font-size: 22px; }
+    .num-input { width: 100px; font-size: 16px; }
+    .pct-input { font-size: 14px; width: 48px; }
+
+    /* Fulfillment toggle: full width */
+    .fulfillment-toggle { display: flex; width: 100%; }
+    .fulfillment-toggle button { flex: 1; padding: 14px 16px; font-size: 11px; }
+
+    /* Suggestions: tighter */
+    .suggestions { padding: 14px 16px; }
+    .suggestion { padding: 12px 0; font-size: 14px; }
+    .suggestion .badge { font-size: 8px; letter-spacing: 0.14em; }
+    .suggestion .why { font-size: 13px; }
+
+    /* Sister review cards: full width, padded */
+    .review-card { padding: 18px 16px; }
+    .review-card .name { font-size: 26px; }
+    textarea.answer {
+      font-size: 16px;
+      min-height: 64px;
+      padding: 12px;
+    }
+    .send-btn { padding: 16px; font-size: 12px; }
+
+    /* Tooltip narrower on small screens */
+    .info-icon { width: 18px; height: 18px; font-size: 11px; }
+
+    /* Decision + legend */
+    .decision { font-size: 14px; }
+    .legend { font-size: 12px; }
+  }
+
+  @media (max-width: 380px) {
+    .sheet { padding: 20px 12px; }
+    h1 { font-size: 26px; }
+    .review-card { padding: 14px 12px; }
+    .menu-list .item, .loc-label { font-size: 15px; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border: none; max-width: none; padding: 32px; }
+    .send-btn, .add-guest, .who-selector, .remove-btn { display: none !important; }
+  }
+</style>
+</head>
+<body class="as-none">
+  <div class="sheet">
+
+    <div class="header">
+      <div class="eyebrow">Pre-Order Review</div>
+      <h1>Funeral Family Meal</h1>
+      <div class="info-strip">
+        <span>Saturday, May 16, 2026</span>
+        <span class="dot">&middot;</span>
+        <span data-info="attending">19 attending</span>
+        <span class="dot">&middot;</span>
+        <span>Maggiano's catering</span>
+      </div>
+    </div>
+
+    <div class="who-selector" id="whoSelector">
+      <div class="who-buttons">
+        <button type="button" class="who-btn" data-who="Des">I'm Des</button>
+        <button type="button" class="who-btn" data-who="Dee">I'm Dee</button>
+        <button type="button" class="who-btn" data-who="">Just looking</button>
+      </div>
+      <div class="who-active" id="whoActive" hidden>
+        Reviewing as <strong id="whoName"></strong>. Name changes auto-fill your sign-off. <button type="button" class="who-change" id="whoChange">change</button>
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="section" id="sec-location">
+      <h2>Dinner Location <span class="info-icon" tabindex="0" role="button" aria-label="Location info">i<span class="tooltip">Sisters &mdash; please confirm or change. If you select "Other," your update will land in your comment box.</span></span></h2>
+      <div class="loc-options">
+        <label class="loc-option">
+          <input type="radio" name="loc" value="moms" checked />
+          <span class="loc-label">Mom's house</span>
+          <span class="loc-tag">Default</span>
+        </label>
+        <label class="loc-option loc-option-other">
+          <input type="radio" name="loc" value="other" />
+          <span class="loc-label">Other</span>
+          <input type="text" class="loc-other" placeholder="enter address or place" disabled />
+        </label>
+      </div>
+      <a href="#sec-menu" class="next-section-link">Next: The Menu</a>
+    </div>
+
+    <!-- Menu -->
+    <div class="section" id="sec-menu">
+      <h2>The Menu</h2>
+      <ul class="menu-list">
+        <li>
+          <div class="item-block">
+            <span class="item">Italian Chopped Salad</span>
+            <div class="item-desc">Greens, prosciutto, blue cheese, tomato, olives, vinaigrette</div>
+          </div>
+          <span class="size">Large pan</span>
+        </li>
+        <li>
+          <div class="item-block">
+            <span class="item">Spaghetti</span>
+            <div class="item-desc">Spaghetti pasta tossed in house red sauce</div>
+          </div>
+          <span class="size">Large pan</span>
+        </li>
+        <li>
+          <div class="item-block">
+            <span class="item">Chicken Marsala</span>
+            <div class="item-desc">Herb-roasted chicken, mushrooms, caramelized onion, marsala wine sauce</div>
+          </div>
+          <span class="size">Large pan</span>
+        </li>
+        <li>
+          <div class="item-block">
+            <span class="item">Tiramis&ugrave;</span>
+            <div class="item-desc">Espresso-soaked ladyfingers, mascarpone cream, dusted with cocoa</div>
+          </div>
+          <span class="size">Small pan</span>
+        </li>
+      </ul>
+      <a href="#sec-guests" class="next-section-link">Next: Guest List</a>
+    </div>
+
+    <!-- Guests -->
+    <div class="section" id="sec-guests">
+      <h2>Guest List &middot; 19 Attending of 20 Listed</h2>
+      <div class="guest-grid">
+        <div class="guest-col">
+          <h3 id="adultsHeader">Adults</h3>
+          <ol class="people-list" id="adultsList" data-group="adult">
+            <li><span class="num">1.</span><span class="name-text">Des</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">2.</span><span class="name-text">Cory</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">3.</span><span class="name-text">Dee</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">4.</span><span class="name-text">Denai</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">5.</span><span class="name-text">Kayla</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">6.</span><span class="name-text">Faith</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">7.</span><span class="name-text">King</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">8.</span><span class="name-text">Cindy</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">9.</span><span class="name-text">Fitzgerald</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">10.</span><span class="name-text">Jeremiah</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">11.</span><span class="name-text">Keda</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">12.</span><span class="name-text">Layla</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">13.</span><span class="name-text">Dad</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">14.</span><span class="name-text">Jer grandma</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">15.</span><span class="name-text">Jer grandpa</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">16.</span><span class="name-text">Ashlee, First Lady</span><button class="remove-btn" title="remove">&times;</button></li>
+          </ol>
+          <button class="add-guest" data-add="adult">+ Add Adult</button>
+        </div>
+        <div class="guest-col">
+          <h3 id="kidsHeader">Kids (3 attending of 4)</h3>
+          <ol class="people-list" id="kidsList" data-group="kid">
+            <li><span class="num">1.</span><span class="name-text">Ava</span><span class="asterisk">*</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li class="not-attending"><span class="num">2.</span><span class="name-text">Emory</span><span class="na-tag">not attending</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">3.</span><span class="name-text">Jackson</span><button class="remove-btn" title="remove">&times;</button></li>
+            <li><span class="num">4.</span><span class="name-text">Brayden</span><button class="remove-btn" title="remove">&times;</button></li>
+          </ol>
+          <button class="add-guest" data-add="kid">+ Add Kid</button>
+        </div>
+      </div>
+      <a href="#sec-quote" class="next-section-link">Next: The Numbers</a>
+    </div>
+
+    <!-- Quote -->
+    <div class="section" id="sec-quote">
+      <h2>Itemized Quote &middot; Troy MI Location <span class="info-icon" tabindex="0" role="button" aria-label="Source info">i<span class="tooltip">Live from your DoorDash cart (Troy MI, Maggiano's). Toggle Delivery / Pickup to preset fees; tip doesn't apply to pickup. Item prices marked * are estimated for the larger pan size &mdash; confirm with Maggiano's.</span></span></h2>
+      <div class="quote" id="quote">
+        <div class="quote-row head">
+          <div>Item</div>
+          <div class="price-cell">Small pan &times; qty</div>
+          <div class="price-cell">Large pan &times; qty</div>
+          <div class="price-cell">Line total</div>
+        </div>
+
+        <div class="group-row">Salads</div>
+
+        <div class="quote-row" data-row data-category="salad">
+          <div class="item-name">Italian Chopped Salad</div>
+          <div class="qty-cell">
+            <span class="price">$53.89</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="53.89" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$105.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="105.00" data-qty min="0" value="1" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="salad">
+          <div class="item-name">Maggiano's Salad</div>
+          <div class="qty-cell">
+            <span class="price">$50.39</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="50.39" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$98.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="98.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="salad">
+          <div class="item-name">Chef's Signature Caesar</div>
+          <div class="qty-cell">
+            <span class="price">$51.49</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="51.49" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$100.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="100.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="add-item-wrap" data-category-picker="salad">
+          <select class="cat-picker" data-cat="salad">
+            <option value="">+ Add another salad option</option>
+          </select>
+        </div>
+
+        <div class="group-row">Pasta</div>
+
+        <div class="quote-row" data-row data-category="pasta">
+          <div class="item-name">Spaghetti</div>
+          <div class="qty-cell">
+            <span class="price">$65.59</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="65.59" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price">$117.09</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="117.09" data-qty min="0" value="1" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="pasta">
+          <div class="item-name">Rigatoni "D"<br/><span style="font-size:11px;color:var(--ink-soft);font-style:italic;">grilled chicken, mushrooms, marsala cream</span></div>
+          <div class="qty-cell">
+            <span class="price">$91.29</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="91.29" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$175.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="175.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="add-item-wrap" data-category-picker="pasta">
+          <select class="cat-picker" data-cat="pasta">
+            <option value="">+ Add another pasta option</option>
+          </select>
+        </div>
+
+        <div class="group-row">Chicken</div>
+
+        <div class="quote-row" data-row data-category="chicken">
+          <div class="item-name">Chicken Marsala</div>
+          <div class="qty-cell">
+            <span class="price">$109.99</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="109.99" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price">$187.29</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="187.29" data-qty min="0" value="1" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="chicken">
+          <div class="item-name">Chicken Parmesan</div>
+          <div class="qty-cell">
+            <span class="price">$102.99</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="102.99" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$195.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="195.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="chicken">
+          <div class="item-name">Chicken Piccata</div>
+          <div class="qty-cell">
+            <span class="price">$104.19</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="104.19" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$200.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="200.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="chicken">
+          <div class="item-name">Chicken Francese</div>
+          <div class="qty-cell">
+            <span class="price">$104.19</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="104.19" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$200.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="200.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="quote-row zero" data-row data-category="chicken" data-item="alfredo">
+          <div class="item-name">Fettuccine Alfredo with Chicken<br/><span style="font-size:11px;color:var(--ink-soft);font-style:italic;">parmesan-crusted chicken, parmesan, pecorino, roasted garlic</span></div>
+          <div class="qty-cell">
+            <span class="price">$77.29</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="77.29" data-qty min="0" value="0" />
+          </div>
+          <div class="qty-cell">
+            <span class="price">$152.19</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="152.19" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+        <div class="add-item-wrap" data-category-picker="chicken">
+          <select class="cat-picker" data-cat="chicken">
+            <option value="">+ Add another chicken option</option>
+          </select>
+        </div>
+
+        <div class="group-row">Dessert</div>
+
+        <div class="quote-row" data-row data-category="dessert">
+          <div class="item-name">Tiramis&ugrave;</div>
+          <div class="qty-cell">
+            <span class="price">$69.09</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-small-price="69.09" data-qty min="0" value="1" />
+          </div>
+          <div class="qty-cell">
+            <span class="price est">$135.00</span><span class="x">&times;</span>
+            <input type="number" class="qty" inputmode="numeric" data-large-price="135.00" data-qty min="0" value="0" />
+          </div>
+          <div class="line-total" data-line>$0.00</div>
+        </div>
+
+      </div>
+
+      <div class="fulfillment-toggle">
+        <button type="button" data-mode="delivery" class="active">Delivery</button>
+        <button type="button" data-mode="pickup">Pickup</button>
+      </div>
+      <div class="pickup-person" id="pickupPerson" hidden>
+        <label for="pickupName">Who's picking up?</label>
+        <input type="text" id="pickupName" placeholder="enter name (e.g., Cory or Dee)" autocomplete="off" />
+      </div>
+
+      <div class="quote-totals">
+        <div class="total-row">
+          <span class="label">Subtotal</span>
+          <span class="val" id="subtotal">$0.00</span>
+        </div>
+        <div class="total-row" id="deliveryRow">
+          <span class="label">Delivery fee</span>
+          <span class="val"><input type="number" step="0.01" id="deliveryFee" inputmode="decimal" value="0.99" class="num-input" /></span>
+        </div>
+        <div class="total-row">
+          <span class="label">Fees &amp; estimated tax</span>
+          <span class="val"><input type="number" step="0.01" id="feesTax" inputmode="decimal" value="41.53" class="num-input" /></span>
+        </div>
+        <div class="total-row" id="tipRow">
+          <span class="label">Dasher tip (<input type="number" id="tipPct" inputmode="numeric" value="15" min="0" max="40" class="pct-input" />%)</span>
+          <span class="val" id="tip">$0.00</span>
+        </div>
+        <div class="total-row grand">
+          <span class="label">Total</span>
+          <span class="val" id="grand">$0.00</span>
+        </div>
+        <div class="total-row">
+          <span class="label">Per attending guest (<span id="attCount">18</span>)</span>
+          <span class="val" id="perGuest">$0.00</span>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <h3>Recommended Fixes &amp; Add-Ons</h3>
+
+        <div class="suggestion" data-fix="add-alfredo">
+          <span class="badge">Add-On</span>
+          <div class="body">
+            <strong>Add a small Fettuccine Alfredo with Chicken.</strong> Three kids attending may skip the spaghetti or marsala &mdash; alfredo is a familiar fallback. Parmesan-crusted chicken, parmesan, pecorino, roasted garlic. Small $77.29 / Large $152.19.
+            <button type="button" class="apply-btn" data-action="add-alfredo">Apply &mdash; Add Small ($77.29)</button>
+          </div>
+        </div>
+
+      </div>
+      <a href="#sec-review" class="next-section-link">Next: Quick Sign-Off</a>
+    </div>
+
+    <!-- Sister feedback -->
+    <div class="section" id="sec-review">
+      <h2>Sister Sign-Off &middot; 3 Quick Decisions</h2>
+      <div class="review-grid">
+
+        <div class="review-card" data-sister="Des">
+          <div class="name">Des</div>
+          <div class="role">3 Taps. Send.</div>
+
+          <div class="signoff" data-section="menu">
+            <div class="signoff-num">1 of 3</div>
+            <div class="signoff-q">Menu &mdash; looks good?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="what would you change?"></textarea>
+          </div>
+
+          <div class="signoff" data-section="guests">
+            <div class="signoff-num">2 of 3</div>
+            <div class="signoff-q">Guest list &mdash; looks good?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="names to add or remove"></textarea>
+          </div>
+
+          <div class="signoff" data-section="location">
+            <div class="signoff-num">3 of 3</div>
+            <div class="signoff-q">Mom's house &mdash; works?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="suggested location"></textarea>
+          </div>
+
+          <div class="signoff-extra">
+            <label>Anything else? (optional)</label>
+            <textarea class="signoff-extra-note" placeholder="dietary, allergies, food sensitivity"></textarea>
+          </div>
+
+          <button type="button" class="send-btn" data-sister="Des" disabled>Send to Nai</button>
+        </div>
+
+        <div class="review-card" data-sister="Dee">
+          <div class="name">Dee</div>
+          <div class="role">3 Taps. Send.</div>
+
+          <div class="signoff" data-section="menu">
+            <div class="signoff-num">1 of 3</div>
+            <div class="signoff-q">Menu &mdash; looks good?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="what would you change?"></textarea>
+          </div>
+
+          <div class="signoff" data-section="guests">
+            <div class="signoff-num">2 of 3</div>
+            <div class="signoff-q">Guest list &mdash; looks good?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="names to add or remove"></textarea>
+          </div>
+
+          <div class="signoff" data-section="location">
+            <div class="signoff-num">3 of 3</div>
+            <div class="signoff-q">Mom's house &mdash; works?</div>
+            <div class="signoff-actions">
+              <button type="button" class="signoff-btn approve" data-act="approve">&check; Yes</button>
+              <button type="button" class="signoff-btn change" data-act="change">Suggest change</button>
+            </div>
+            <textarea class="signoff-note" hidden placeholder="suggested location"></textarea>
+          </div>
+
+          <div class="signoff-extra">
+            <label>Anything else? (optional)</label>
+            <textarea class="signoff-extra-note" placeholder="dietary, allergies, food sensitivity"></textarea>
+          </div>
+
+          <button type="button" class="send-btn" data-sister="Dee" disabled>Send to Nai</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="decision">
+      <strong>Next Step</strong>
+      Once Des and Dee sign off, Denai places the order with Maggiano's.
+    </div>
+
+    <div class="legend">
+      <span class="asterisk">*</span> denotes adult-size portion.
+    </div>
+
+  </div>
+
+<script>
+(function () {
+  const fmt = (n) => '$' + n.toFixed(2);
+
+  function renumber(list) {
+    const items = list.querySelectorAll('li');
+    items.forEach((li, i) => {
+      const num = li.querySelector('.num');
+      if (num) num.textContent = (i + 1) + '.';
+    });
+  }
+
+  function countAttending() {
+    let adults = 0, kids = 0, adultsAtt = 0, kidsAtt = 0;
+    document.querySelectorAll('#adultsList li').forEach((li) => {
+      const cnt = parseInt(li.dataset.count, 10) || 1;
+      adults += cnt;
+      if (!li.classList.contains('not-attending')) adultsAtt += cnt;
+    });
+    document.querySelectorAll('#kidsList li').forEach((li) => {
+      const cnt = parseInt(li.dataset.count, 10) || 1;
+      kids += cnt;
+      if (!li.classList.contains('not-attending')) kidsAtt += cnt;
+    });
+    return { adults, kids, adultsAtt, kidsAtt, totalAtt: adultsAtt + kidsAtt };
+  }
+
+  function updateCounts() {
+    const c = countAttending();
+    // Info-strip "X attending"
+    const infoAttending = document.querySelector('[data-info="attending"]');
+    if (infoAttending) infoAttending.textContent = c.totalAtt + ' attending';
+    // Section h2
+    document.querySelectorAll('.section h2').forEach((h) => {
+      if (h.textContent.startsWith('Guest List')) {
+        const listed = c.adults + c.kids;
+        h.textContent = 'Guest List · ' + c.totalAtt + ' Attending of ' + listed + ' Listed';
+      }
+    });
+    // Adults header
+    document.querySelectorAll('.guest-col h3').forEach((h) => {
+      if (h.id === 'kidsHeader') {
+        h.textContent = 'Kids (' + c.kidsAtt + ' attending of ' + c.kids + ')';
+      } else if (h.id === 'adultsHeader') {
+        h.textContent = c.adults === c.adultsAtt
+          ? 'Adults (' + c.adults + ')'
+          : 'Adults (' + c.adultsAtt + ' attending of ' + c.adults + ')';
+      }
+    });
+    // Attending count for per-guest
+    const attEl = document.getElementById('attCount');
+    if (attEl) attEl.textContent = c.totalAtt;
+    return c;
+  }
+
+  function recalcQuote() {
+    let subtotal = 0;
+    document.querySelectorAll('[data-row]').forEach((row) => {
+      let line = 0;
+      row.querySelectorAll('input[data-qty]').forEach((input) => {
+        const qty = parseInt(input.value, 10) || 0;
+        const price = parseFloat(input.dataset.smallPrice || input.dataset.largePrice) || 0;
+        line += qty * price;
+      });
+      row.querySelector('[data-line]').textContent = fmt(line);
+      // Don't auto-hide rows mid-edit — only the initial .zero (set in HTML) hides them.
+      // Once a row is shown via dropdown or starts visible, it stays visible even if qty drops to 0.
+      subtotal += line;
+    });
+    const isPickup = document.body.classList.contains('pickup-mode');
+    const delivery = isPickup ? 0 : (parseFloat(document.getElementById('deliveryFee').value) || 0);
+    const feesTax = parseFloat(document.getElementById('feesTax').value) || 0;
+    const tipPct = isPickup ? 0 : (parseFloat(document.getElementById('tipPct').value) || 0);
+    const tip = subtotal * (tipPct / 100);
+    const grand = subtotal + delivery + feesTax + tip;
+    document.getElementById('subtotal').textContent = fmt(subtotal);
+    document.getElementById('tip').textContent = fmt(tip);
+    document.getElementById('grand').textContent = fmt(grand);
+
+    const c = countAttending();
+    const perGuest = c.totalAtt > 0 ? grand / c.totalAtt : 0;
+    document.getElementById('perGuest').textContent = fmt(perGuest);
+
+    // Keep the add-item dropdown in sync with what's hidden
+    if (typeof populateAddItemDropdown === 'function') populateAddItemDropdown();
+  }
+
+  function setFulfillment(mode) {
+    document.querySelectorAll('.fulfillment-toggle button').forEach((b) => {
+      b.classList.toggle('active', b.dataset.mode === mode);
+    });
+    const dEl = document.getElementById('deliveryFee');
+    const fEl = document.getElementById('feesTax');
+    const tEl = document.getElementById('tipPct');
+    const cur = {
+      d: parseFloat(dEl.value),
+      f: parseFloat(fEl.value),
+      t: parseFloat(tEl.value),
+    };
+    if (mode === 'pickup') {
+      document.body.classList.add('pickup-mode');
+      // Only reset values that still match the delivery default — preserves manual edits.
+      if (cur.d === 0.99) dEl.value = '0.00';
+      if (cur.f === 41.53) fEl.value = '25.64';
+      if (cur.t === 15) tEl.value = '0';
+    } else {
+      document.body.classList.remove('pickup-mode');
+      if (cur.d === 0) dEl.value = '0.99';
+      if (cur.f === 25.64) fEl.value = '41.53';
+      if (cur.t === 0) tEl.value = '15';
+    }
+    updatePickupPerson();
+    recalcQuote();
+  }
+
+  let activeSister = null;
+
+  function getSisterCard(sister) {
+    return document.querySelector('.review-card[data-sister="' + sister + '"]');
+  }
+
+  function appendToSignoff(sister, section, line) {
+    if (!sister) return;
+    const card = getSisterCard(sister);
+    if (!card) return;
+    const block = card.querySelector('.signoff[data-section="' + section + '"]');
+    if (!block) return;
+    // Auto-activate "Suggest change" mode + reveal note
+    setSignoffState(block, 'change');
+    const ta = block.querySelector('.signoff-note');
+    const existing = ta.value.trim();
+    ta.value = (existing ? existing + '\n' : '') + line;
+    refreshSendButtons();
+  }
+
+  function setSignoffState(block, state) {
+    const buttons = block.querySelectorAll('.signoff-btn');
+    buttons.forEach((b) => b.classList.toggle('active', b.dataset.act === state));
+    const note = block.querySelector('.signoff-note');
+    if (state === 'change') {
+      block.classList.remove('done');
+      block.classList.add('changed');
+      note.hidden = false;
+    } else if (state === 'approve') {
+      block.classList.remove('changed');
+      block.classList.add('done');
+      note.hidden = true;
+    }
+  }
+
+  function refreshSendButtons() {
+    document.querySelectorAll('.review-card').forEach((card) => {
+      const allSet = Array.from(card.querySelectorAll('.signoff')).every((b) =>
+        b.classList.contains('done') || b.classList.contains('changed'));
+      const btn = card.querySelector('.send-btn');
+      if (btn) btn.disabled = !allSet;
+    });
+  }
+
+  function setActiveSister(name) {
+    activeSister = name || null;
+    document.body.classList.remove('as-Des', 'as-Dee', 'as-none');
+    if (activeSister) {
+      document.body.classList.add('as-' + activeSister);
+    } else {
+      document.body.classList.add('as-none');
+    }
+    document.querySelectorAll('.who-btn').forEach(b => b.classList.toggle('active', b.dataset.who === (activeSister || '')));
+    const banner = document.getElementById('whoActive');
+    const nameEl = document.getElementById('whoName');
+    if (activeSister) {
+      banner.hidden = false;
+      nameEl.textContent = activeSister;
+    } else {
+      banner.hidden = true;
+    }
+  }
+
+  function addRemoveHandlers(root) {
+    root.querySelectorAll('.remove-btn').forEach((btn) => {
+      btn.onclick = () => {
+        const li = btn.closest('li');
+        const list = li.parentElement;
+        const nameEl = li.querySelector('.name-text');
+        const guestName = nameEl ? ((nameEl.value !== undefined ? nameEl.value : nameEl.textContent) || '').trim() : '';
+        li.remove();
+        renumber(list);
+        updateCounts();
+        recalcQuote();
+        if (guestName && activeSister) {
+          appendToSignoff(activeSister, 'guests', 'Remove: ' + guestName);
+        }
+      };
+    });
+  }
+
+  function addGuest(group) {
+    const list = group === 'adult' ? document.getElementById('adultsList') : document.getElementById('kidsList');
+    const li = document.createElement('li');
+    const num = document.createElement('span');
+    num.className = 'num';
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.className = 'name-text name-input';
+    nameInput.placeholder = group === 'adult' ? 'New adult name' : 'New kid name';
+    nameInput.autocomplete = 'off';
+    nameInput.autocapitalize = 'words';
+    const rm = document.createElement('button');
+    rm.className = 'remove-btn';
+    rm.title = 'remove';
+    rm.innerHTML = '&times;';
+    li.appendChild(num);
+    li.appendChild(nameInput);
+    li.appendChild(rm);
+    list.appendChild(li);
+    renumber(list);
+    addRemoveHandlers(li);
+    updateCounts();
+    recalcQuote();
+
+    // Track adds in active sister's guests sign-off note (single-shot, fires on blur or Enter).
+    // Skips if the row is removed before commit so we don't log + then "remove" the same name.
+    if (activeSister) {
+      let logged = false;
+      let removed = false;
+      const commit = () => {
+        if (logged || removed) return;
+        const finalName = nameInput.value.trim();
+        if (!finalName) return;
+        logged = true;
+        appendToSignoff(activeSister, 'guests', 'Add: ' + finalName + ' (' + group + ')');
+      };
+      nameInput.addEventListener('blur', commit);
+      nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); nameInput.blur(); }
+      });
+      // If the row is removed before commit, mark removed so blur-on-DOM-detach doesn't fire.
+      const liRef = li;
+      const observer = new MutationObserver(() => {
+        if (!liRef.isConnected) { removed = true; observer.disconnect(); }
+      });
+      observer.observe(list, { childList: true });
+    }
+
+    nameInput.focus();
+  }
+
+  function sendToNai(btn) {
+    if (btn.disabled) return;
+    const card = btn.closest('.review-card');
+    const sister = btn.dataset.sister;
+    let text = sister + ' — Sign-off for the funeral family meal:\n';
+    const labels = { menu: 'Menu', guests: 'Guest List', location: 'Location' };
+    card.querySelectorAll('.signoff').forEach((block) => {
+      const section = block.dataset.section;
+      const isApproved = block.classList.contains('done');
+      const isChange = block.classList.contains('changed');
+      const note = (block.querySelector('.signoff-note').value || '').trim();
+      if (isApproved) {
+        text += '\n✓ ' + labels[section] + ': looks good';
+      } else if (isChange) {
+        text += '\n✎ ' + labels[section] + ': suggested change';
+        if (note) text += '\n   ' + note.split('\n').join('\n   ');
+      }
+    });
+    const extra = (card.querySelector('.signoff-extra-note').value || '').trim();
+    if (extra) text += '\n\nAlso: ' + extra;
+    text += '\n';
+
+    const onCopied = () => {
+      btn.textContent = 'Copied! Paste in iMessage to Nai';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Send to Nai';
+        btn.classList.remove('copied');
+      }, 2800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onCopied, () => fallbackCopy(text, onCopied));
+    } else {
+      fallbackCopy(text, onCopied);
+    }
+  }
+
+  // ─── Sign-off button handlers ───
+  document.querySelectorAll('.signoff-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const block = btn.closest('.signoff');
+      setSignoffState(block, btn.dataset.act);
+      refreshSendButtons();
+      if (btn.dataset.act === 'change') {
+        const note = block.querySelector('.signoff-note');
+        setTimeout(() => note.focus(), 80);
+      } else {
+        // After approving, scroll to next signoff. If all 3 are done, scroll to Send button.
+        const card = block.closest('.review-card');
+        const allDone = Array.from(card.querySelectorAll('.signoff')).every((b) =>
+          b.classList.contains('done') || b.classList.contains('changed'));
+        if (allDone) {
+          const send = card.querySelector('.send-btn');
+          if (send) send.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          const next = block.nextElementSibling;
+          if (next && (next.classList.contains('signoff') || next.classList.contains('signoff-extra'))) {
+            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+    });
+  });
+
+  // ─── Apply suggestion handlers ───
+  document.querySelectorAll('.apply-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action;
+      const sug = btn.closest('.suggestion');
+      if (action === 'add-alfredo') {
+        const alfRow = document.querySelector('[data-item="alfredo"]');
+        if (alfRow) {
+          alfRow.classList.remove('zero');
+          alfRow.querySelector('input[data-small-price]').value = 1;
+        }
+        recalcQuote();
+        populateAddItemDropdown();
+        sug.classList.add('applied');
+        btn.textContent = 'Added to quote';
+      }
+    });
+  });
+
+  // ─── Per-category add-item dropdowns ───
+  const CATEGORY_LABELS = {
+    salad: 'salad',
+    pasta: 'pasta',
+    chicken: 'chicken option',
+    dessert: 'dessert',
+  };
+
+  function populateAddItemDropdown() {
+    document.querySelectorAll('.cat-picker').forEach((sel) => {
+      const cat = sel.dataset.cat;
+      const label = CATEGORY_LABELS[cat] || cat;
+      sel.innerHTML = '<option value="">+ Add another ' + label + '</option>';
+      document.querySelectorAll('[data-row][data-category="' + cat + '"]').forEach((row, idx) => {
+        if (!row.classList.contains('zero')) return;
+        const name = row.querySelector('.item-name')?.firstChild?.textContent?.trim() || 'Item';
+        const smallEl = row.querySelector('input[data-small-price]');
+        const smallPrice = smallEl ? smallEl.dataset.smallPrice : null;
+        if (!smallPrice) return;
+        const rowId = row.dataset.item || (cat + '-' + idx);
+        if (!row.dataset.item) row.dataset.item = rowId;
+        const opt = document.createElement('option');
+        opt.value = rowId;
+        opt.textContent = name + ' — small $' + smallPrice;
+        sel.appendChild(opt);
+      });
+      // Hide the picker entirely if there are no options to add
+      const pickerWrap = sel.closest('.add-item-wrap');
+      if (pickerWrap) pickerWrap.style.display = (sel.options.length <= 1) ? 'none' : '';
+    });
+  }
+  function handleCatPickerChange(e) {
+    const sel = e.target;
+    if (!sel.value) return;
+    const target = document.querySelector('[data-row][data-item="' + sel.value + '"]');
+    if (target) {
+      target.classList.remove('zero');
+      const smallQty = target.querySelector('input[data-small-price]');
+      if (smallQty) smallQty.value = 1;
+      recalcQuote();
+      populateAddItemDropdown();
+    }
+    sel.value = '';
+  }
+  document.querySelectorAll('.cat-picker').forEach((sel) => {
+    sel.addEventListener('change', handleCatPickerChange);
+  });
+
+  // Inject a × remove button into each quote row + a spacer in the head row, so
+  // a sister can pull an item out of the order and have it return to the dropdown.
+  (function attachRowRemovers() {
+    const head = document.querySelector('.quote-row.head');
+    if (head && !head.querySelector('.row-remove-spacer')) {
+      const spacer = document.createElement('div');
+      spacer.className = 'row-remove-spacer';
+      head.appendChild(spacer);
+    }
+    document.querySelectorAll('[data-row]').forEach((row) => {
+      if (row.querySelector('.row-remove')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'row-remove';
+      btn.title = 'remove from order';
+      btn.setAttribute('aria-label', 'Remove this item from the order');
+      btn.innerHTML = '&times;';
+      btn.addEventListener('click', () => {
+        row.classList.add('zero');
+        row.querySelectorAll('input[data-qty]').forEach((i) => { i.value = 0; });
+        recalcQuote();
+      });
+      row.appendChild(btn);
+    });
+  })();
+
+  // ─── Pickup person field show/hide ───
+  function updatePickupPerson() {
+    const isPickup = document.body.classList.contains('pickup-mode');
+    const pp = document.getElementById('pickupPerson');
+    if (pp) pp.hidden = !isPickup;
+  }
+
+  function fallbackCopy(text, cb) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let copied = false;
+    try { copied = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    if (copied) {
+      cb();
+    } else {
+      // Last resort: open a prompt with the text so the user can copy manually.
+      window.prompt('Copy this and paste in iMessage to Nai:', text);
+      cb();
+    }
+  }
+
+  // ─── Location handling ───
+  const lastLoggedLocation = { Des: '', Dee: '' };
+  function logLocationChange() {
+    if (!activeSister) return;
+    const checked = document.querySelector('input[name="loc"]:checked');
+    if (!checked) return;
+    let msg = '';
+    if (checked.value === 'moms') {
+      msg = "Location confirmed: Mom's house";
+    } else if (checked.value === 'other') {
+      const txt = (document.querySelector('.loc-other').value || '').trim();
+      if (!txt) return;
+      msg = "Location: " + txt + " (not Mom's house)";
+    }
+    if (msg && msg !== lastLoggedLocation[activeSister]) {
+      if (checked.value === 'moms') {
+        const block = getSisterCard(activeSister)?.querySelector('.signoff[data-section="location"]');
+        if (block) { setSignoffState(block, 'approve'); refreshSendButtons(); }
+      } else {
+        appendToSignoff(activeSister, 'location', msg);
+      }
+      lastLoggedLocation[activeSister] = msg;
+    }
+  }
+  document.querySelectorAll('input[name="loc"]').forEach((r) => {
+    r.addEventListener('change', () => {
+      const otherInput = document.querySelector('.loc-other');
+      if (r.value === 'other' && r.checked) {
+        otherInput.disabled = false;
+        otherInput.focus();
+      } else if (r.value === 'moms' && r.checked) {
+        otherInput.disabled = true;
+        logLocationChange();
+      }
+    });
+  });
+  document.querySelector('.loc-other').addEventListener('blur', logLocationChange);
+
+  // Wire up
+  document.querySelectorAll('.who-btn').forEach((btn) => {
+    btn.addEventListener('click', () => setActiveSister(btn.dataset.who));
+  });
+  document.getElementById('whoChange').addEventListener('click', () => setActiveSister(null));
+  document.querySelectorAll('.info-icon').forEach((icon) => {
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      icon.classList.toggle('show');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.info-icon.show').forEach(i => i.classList.remove('show'));
+  });
+  document.querySelectorAll('.send-btn').forEach((btn) => {
+    btn.addEventListener('click', () => sendToNai(btn));
+  });
+  document.querySelectorAll('.add-guest').forEach((btn) => {
+    btn.addEventListener('click', () => addGuest(btn.dataset.add));
+  });
+  document.querySelectorAll('[data-row] input, [data-row] select, #deliveryFee, #feesTax, #tipPct').forEach((el) => {
+    el.addEventListener('input', recalcQuote);
+    el.addEventListener('change', recalcQuote);
+  });
+  document.querySelectorAll('.fulfillment-toggle button').forEach((btn) => {
+    btn.addEventListener('click', () => setFulfillment(btn.dataset.mode));
+  });
+  addRemoveHandlers(document);
+
+  // Initial render
+  updateCounts();
+  recalcQuote();
+})();
+</script>
+</body>
+</html>
